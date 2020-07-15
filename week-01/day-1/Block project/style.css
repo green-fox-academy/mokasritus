@@ -1,0 +1,59 @@
+header {
+    background: gray;
+    padding-left: 14%;
+    padding-right: 14%;
+    margin: 1px;
+    width: 100%;
+    border: 1px solid black;
+    
+   
+}
+main {
+    padding-left: 15%;
+    padding-right: 15%;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Arimo', sans-serif;
+   }
+
+label, input {
+    display: block;
+    font-weight: bold;
+}
+
+label {
+    margin-top: 10px;
+}
+
+.post {
+    border: 1px solid black;
+    margin: 20px 0;
+    padding: 3px;
+
+}
+
+dt {
+    font-size: 2em;
+    margin: 0 0;
+    font-weight: normal;
+    }
+
+h1{
+    margin: 0;
+    padding: 10px;
+    }
+
+h2 {
+    font-weight: normal;
+}
+dd {
+    margin: 0;
+    }
+
+textarea {
+    max-width: 100%;
+    min-width: 100%;
+}
