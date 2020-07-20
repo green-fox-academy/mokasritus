@@ -12,24 +12,7 @@ public class GuessTheNumber {
 
     int storedNumber = 8;
 
-    //  for (int i = 0; i < 100; i++) {
-    //    Scanner scanner = new Scanner(System.in);
-    //    System.out.println("Tell me your guess:");
-    //    int guess = scanner.nextInt();
-    //    if (storedNumber < guess) {
-    //      System.out.println("The stored number is lower");
-    //    } else if (storedNumber > guess) {
-    //      System.out.println("The stored number is higher");
-    //    } else {
-    //      System.out.println("You found the number: " + storedNumber);
-    //      break;
-    //    }
-//    }
-// }
-//}
-//}
-    int i = 0;
-    do {
+    for (int i = 0; i < 100; i++) {
       Scanner scanner = new Scanner(System.in);
       System.out.println("Tell me your guess:");
       int guess = scanner.nextInt();
@@ -40,9 +23,14 @@ public class GuessTheNumber {
       } else {
         System.out.println("You found the number: " + storedNumber);
         break;
-        i++;
       }
-      while (storedNumber == guess);
     }
+
   }
 }
+
+
+
+
+
+
