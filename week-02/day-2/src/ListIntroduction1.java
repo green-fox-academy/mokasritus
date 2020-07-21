@@ -11,17 +11,17 @@ public class ListIntroduction1 {
     System.out.println(names.size());
     System.out.println(names.get(2));
 
-    for (String i : names){
+    for (String i : names) {
       System.out.println(i);
     }
 
     for (int i = 0; i < names.size(); i++) {
-      System.out.println(i+1 + "." + names.get(i));
+      System.out.println(i + 1 + "." + names.get(i));
     }
     names.remove(1);
     System.out.println(names);
 
-    for (int i = names.size()-1; i >=0 ; i--) {
+    for (int i = names.size() - 1; i >= 0; i--) {
       System.out.println(names.get(i));
     }
     names.clear();
