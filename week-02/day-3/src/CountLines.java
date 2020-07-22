@@ -10,7 +10,7 @@ public class CountLines {
   // It should return zero if it can't open the file, and
   // should not raise any error.
   public static void main(String[] args) {
-  countLines("my-file.txt");
+    countLines("my-file.txt");
   }
 
   public static void countLines(String fileName) {
