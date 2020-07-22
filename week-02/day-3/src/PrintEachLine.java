@@ -11,7 +11,8 @@ public class PrintEachLine {
     // If the program is unable to read the file (for example it does not exist),
     // then it should print the following error message: "Unable to read file: my-file.txt"
     try {
-      List<String> allLines = Files.readAllLines(Paths.get("my-file.txt"));
+      Path filePath = Paths.get("my-file.txt");
+      List<String> allLines = Files.readAllLines(filePath);
       for (String line: allLines
            ) {
         System.out.println(line);
