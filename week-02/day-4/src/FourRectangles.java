@@ -20,13 +20,14 @@ public class FourRectangles {
       graphics.setColor(getRandomColor());
       graphics.drawRect(x,y,width, height);
     }
+
     //int rectangles = 3;
     //int size = 200;
 
     //int change = size / rectangles;
 
     //for (int i = 0; i <= rectangles; i++) {
-    //size -= change;
+        //size -= change;
     //size = size - change;
     //int x1 = WIDTH / 2 - size / 2;
     //int y1 = HEIGHT / 2 - size / 2;
