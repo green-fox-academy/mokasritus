@@ -5,29 +5,26 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class PositionSquare {
+public class CenterBoxFunction {
 
-  public static void mainDraw(Graphics graphics) {
-    // create a function that draws one square and takes 3 parameters:
-    // the x and y coordinates of the square's top left corner and the graphics
-    // and draws a 50x50 square from that point.
+  public static void mainDraw(Graphics graphics){
+    // create a function that draws one square and takes 2 parameters:
+    // the square size and the graphics
+    // and draws a square of that size to the center of the canvas.
     // draw 3 squares with that function.
     // avoid code duplication.
 
     for (int i = 0; i < 3; i++) {
-      Random random = new Random();
-      int width = 50;
-      int height = 50;
-      int x = random.nextInt(WIDTH - width);
-      int y = random.nextInt(HEIGHT - height);
-      drawSquare(x, y, graphics);
+      Random random = new Random ();
+      int size = random.nextInt(WIDTH+1);
+      drawOneSquare(size, graphics);
     }
-  }
 
-  public static void drawSquare(int x, int y, Graphics graphics) {
-    int width = 50;
-    int height = 50;
-    graphics.drawRect(x, y, width, height);
+  }
+  public static void drawOneSquare (int size, Graphics graphics) {
+    int x1 = WIDTH / 2 - size / 2;
+    int y1 = HEIGHT / 2 - size / 2;
+    graphics.drawRect(x1, y1, size, size);
   }
 
   // Don't touch the code below
@@ -52,5 +49,4 @@ public class PositionSquare {
       mainDraw(graphics);
     }
   }
-
 }
