@@ -17,7 +17,7 @@ public class HorizontalLines {
       int y = getRandomYCoordinate();
       drawThree50LongHorizontalLine(x, y, graphics);
     }
-    
+
 
   }
   public static void drawThree50LongHorizontalLine (int x1,int y1, Graphics graphics){
