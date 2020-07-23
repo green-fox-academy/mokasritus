@@ -5,27 +5,25 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class GoToCenter {
+public class HorizontalLines {
   public static void mainDraw(Graphics graphics) {
     // Create a function that draws a single line and takes 3 parameters:
     // The x and y coordinates of the line's starting point and the graphics
-    // and draws a line from that point to the center of the canvas.
+    // and draws a 50 long horizontal line from that point.
     // Draw at least 3 lines with that function using a loop.
 
-    drawSingleLine(graphics, getRandomXCoordinate(), getRandomYCoordinate());
-  }
-
-  public static void drawSingleLine(Graphics graphics, int xCoordinates, int yCoordinates) {
-
     for (int i = 0; i < 3; i++) {
-      int xCoord = xCoordinates + getRandomXCoordinate();
-      int yCoord = yCoordinates + getRandomYCoordinate();
-      int xCenter = WIDTH / 2;
-      int yCenter = HEIGHT / 2;
-      graphics.drawLine(xCoord, yCoord, xCenter, yCenter);
-
-      //int a = (int) Math.random()*200-100;
+      int x = getRandomXCoordinate();
+      int y = getRandomYCoordinate();
+      drawThree50LongHorizontalLine(x, y, graphics);
     }
+    
+
+  }
+  public static void drawThree50LongHorizontalLine (int x1,int y1, Graphics graphics){
+      int x2 = x1 + 50;
+      int y2 = y1;
+      graphics.drawLine(x1, y1, x2, y2);
   }
 
   public static int getRandomXCoordinate() {
@@ -36,8 +34,8 @@ public class GoToCenter {
 
   public static int getRandomYCoordinate() {
     Random random = new Random();
-    int limitY = HEIGHT;
-    return random.nextInt(limitY);
+    int limitX = HEIGHT;
+    return random.nextInt(limitX);
   }
 
 
