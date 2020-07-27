@@ -12,18 +12,18 @@ public class Reverse {
   //System.out.println(reverse(toBeReversed));
 
   //public static String reverse(String s) {
-    //char[] temp = s.toCharArray();
-    //String m = "";
-    //for (int i = temp.length - 1; i >= 0; i--) {
-    //  m = m.concat(String.valueOf(temp[i]));
-    //}
-    //return m;
+  //char[] temp = s.toCharArray();
+  //String m = "";
+  //for (int i = temp.length - 1; i >= 0; i--) {
+  //  m = m.concat(String.valueOf(temp[i]));
+  //}
+  //return m;
 
-  public static String reverse1 (String s) {
+  public static String reverse1(String s) {
     String m = "";
-    for (int i = s.length()-1; i >= 0 ; i--) {
-     m = m += s.charAt(i);
+    for (int i = s.length() - 1; i >= 0; i--) {
+      m = m + s.charAt(i);
     }
-      return m;
+    return m;
   }
 }

@@ -12,9 +12,8 @@ public class GreaterFunction {
     String al = "Green Fox";
     System.out.println(greet(al)); //greet(al)
   }
+
   public static String greet (String name) { //public static void greet (String name) {
     return "Greetings dear, " + name; // System.out.println("Greetings dear, " + name);
-
-
   }
 }
