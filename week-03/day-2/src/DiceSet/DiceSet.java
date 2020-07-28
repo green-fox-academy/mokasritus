@@ -1,7 +1,6 @@
 package DiceSet;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class DiceSet {
@@ -40,13 +39,27 @@ public class DiceSet {
     // Your task is to roll the dice until all of the dice are 6
 
     DiceSet diceSet = new DiceSet();
-    System.out.println(diceSet.getCurrent());
-    System.out.println(diceSet.roll());
-    System.out.println(diceSet.getCurrent());
-    System.out.println(diceSet.getCurrent(5));
-    diceSet.reroll();
-    System.out.println(diceSet.getCurrent());
-    diceSet.reroll(4);
+    diceSet.roll();
+    while (allElementIsSix(diceSet))
+    for (int i = 0; i < diceSet.getCurrent().size(); i++) {
+      if (diceSet.getCurrent(i) == 6) {
+        continue;
+      } else {
+        diceSet.reroll(i);
+      }
+    }
     System.out.println(diceSet.getCurrent());
   }
+
+  public static boolean allElementIsSix(DiceSet diceSet) {
+    for (int i = 0; i < diceSet.getCurrent().size(); i++) {
+      if (diceSet.getCurrent(i) == 6) {
+        continue;
+      } else {
+        return true;
+      }
+    }
+    return false;
+  }
 }
+
