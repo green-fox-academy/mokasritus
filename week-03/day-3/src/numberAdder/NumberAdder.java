@@ -12,7 +12,7 @@ public class NumberAdder {
     if (n == 0) {
       return 0;
     } else {
-      return numberAdder(n - 1 )+ n;
+      return numberAdder(n - 1) + n;
     }
   }
 }
