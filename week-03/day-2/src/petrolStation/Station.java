@@ -12,6 +12,6 @@ public class Station {
 
   public void refill (Car car) {
     this.gasAmount-=car.getCapacity();
-    car.setGasAmount(car.getGasAmount()+car.getCapacity()); // car.setGasAmount()--> ezzel állítom át a GasAmount értékét és a zárójelen belül kell megadnom hogy hogyan kapom meg az értékét(számítási módot
+    car.setGasAmount(car.getCapacity()-car.getGasAmount()); // car.setGasAmount()--> ezzel állítom át a GasAmount értékét és a zárójelen belül kell megadnom hogy hogyan kapom meg az értékét(számítási módot
   }
 }

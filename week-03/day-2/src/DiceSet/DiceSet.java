@@ -42,22 +42,28 @@ public class DiceSet {
     diceSet.roll();
     while (allElementIsSix(diceSet))
     for (int i = 0; i < diceSet.getCurrent().size(); i++) {
-      if (diceSet.getCurrent(i) == 6) {
+      if (diceSet.getCurrent(i) != 6) {
+        diceSet.reroll(i);
+      }
+      /*if (diceSet.getCurrent(i) == 6) {
         continue;
       } else {
         diceSet.reroll(i);
-      }
+      }*/
     }
     System.out.println(diceSet.getCurrent());
   }
 
   public static boolean allElementIsSix(DiceSet diceSet) {
     for (int i = 0; i < diceSet.getCurrent().size(); i++) {
-      if (diceSet.getCurrent(i) == 6) {
+      if (diceSet.getCurrent(i) != 6) {
+        return true;
+      }
+      /*if (diceSet.getCurrent(i) == 6) {
         continue;
       } else {
         return true;
-      }
+      }*/
     }
     return false;
   }
