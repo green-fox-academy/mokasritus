@@ -25,17 +25,24 @@ public class Sum {
     this.elements=elements;
   }
 
-/*  public void fillArray (ArrayList<Integer> elements) {
+ /* public void setElements(ArrayList<Integer> elements) {
+    this.elements = elements;
+  }
+
+  /*public void fillArray (ArrayList<Integer> elements) {
    this.elements=elements;
   }*/
 
-  public static Integer sumElements (ArrayList<Integer> elements){
-    int sum = 0;
-    for (int i = 0; i < elements.size()-1; i++) {
-      sum = sum + elements.get(i);
+  public static Integer sumElements (ArrayList<Integer> elements) {
+
+    if (elements == null) {
+      return null;
+    } else {
+      int sum = 0;
+      for (Integer element : elements) {
+        sum = sum + element;
+      }
+      return sum;
     }
-    return sum;
   }
-
-
 }
