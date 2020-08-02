@@ -1,3 +1,5 @@
+package dataStructure;
+
 import java.util.HashMap;
 
 public class MapIntroduction1 {
