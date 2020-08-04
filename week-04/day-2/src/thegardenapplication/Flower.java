@@ -14,6 +14,10 @@ public class Flower extends Plant {
       System.out.println("The " + super.getColor() + this.getClass().getSimpleName() + " doesn't need water");
     }
   }
+  @Override
+  public boolean needsWater (){
+    return getWaterAmount() < 5;
+  }
 
   @Override
   public void watering(double wateringWaterAmount){

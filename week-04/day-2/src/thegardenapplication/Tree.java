@@ -16,6 +16,11 @@ public class Tree extends Plant{
   }
 
   @Override
+  public boolean needsWater (){
+    return getWaterAmount() < 10;
+  }
+
+  @Override
   public void watering(double wateringWaterAmount){
     setWaterAmount(getWaterAmount()+(wateringWaterAmount*0.40));
   }

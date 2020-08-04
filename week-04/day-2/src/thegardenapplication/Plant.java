@@ -21,6 +21,9 @@ public class Plant {
     return waterAmount;
   }
 
+  public boolean needsWater (){
+    return true;
+  }
   public void needsWaterOrNot() {
     if (getWaterAmount() < 5) {
       System.out.println("The " + this.color + this.getClass().getSimpleName() + " needs water");
