@@ -33,5 +33,5 @@ public class Student extends Person {
     this.skippedDays += numberOfDays;
   }
 
-  
+
 }

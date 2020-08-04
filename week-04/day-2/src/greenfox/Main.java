@@ -15,5 +15,9 @@ public class Main {
     student.skipDays(3);
     student.introduce();
 
+    Mentor mentor = new Mentor();
+    mentor.getGoal();
+    mentor.introduce();
+
   }
 }
