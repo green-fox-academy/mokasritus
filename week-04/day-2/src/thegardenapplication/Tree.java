@@ -15,5 +15,8 @@ public class Tree extends Plant{
     }
   }
 
-
+  @Override
+  public void watering(double wateringWaterAmount){
+    setWaterAmount(getWaterAmount()+(wateringWaterAmount*0.40));
+  }
 }
