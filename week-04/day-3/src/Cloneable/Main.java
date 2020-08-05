@@ -12,6 +12,7 @@ public class Main {
   public static void main(String[] args) {
     Student student = new Student();
     student.clone(); //példányt klónozzuk
+
     Student john = new Student("John", 20, "male", "BME");
 
     //létrehozzuk a johnTheClone referenciát és egyenlővé tesszük a a john példány klónpéldányával
