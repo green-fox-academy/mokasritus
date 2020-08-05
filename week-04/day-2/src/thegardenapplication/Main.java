@@ -1,7 +1,5 @@
 package thegardenapplication;
 
-import java.sql.SQLOutput;
-
 public class Main {
   public static void main(String[] args) {
     Garden garden = new Garden();

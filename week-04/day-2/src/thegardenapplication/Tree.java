@@ -1,8 +1,8 @@
 package thegardenapplication;
 
-public class Tree extends Plant{
+public class Tree extends Plant {
 
-  public Tree (String color) {
+  public Tree(String color) {
     super(color);
   }
 
@@ -16,12 +16,12 @@ public class Tree extends Plant{
   }*/
 
   @Override
-  public boolean needsWater (){
+  public boolean needsWater() {
     return getWaterAmount() < 10;
   }
 
   @Override
-  public void watering(double wateringWaterAmount){
-    setWaterAmount(getWaterAmount()+(wateringWaterAmount*0.40));
+  public void watering(double wateringWaterAmount) {
+    setWaterAmount(getWaterAmount() + (wateringWaterAmount * 0.40));
   }
 }
