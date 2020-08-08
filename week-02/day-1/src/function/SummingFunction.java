@@ -1,3 +1,5 @@
+package function;
+
 public class SummingFunction {
   public static void main(String[] args) {
     // Create the usual class wrapper and main method on your own.

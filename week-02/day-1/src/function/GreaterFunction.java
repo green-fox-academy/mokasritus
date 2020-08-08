@@ -1,3 +1,5 @@
+package function;
+
 public class GreaterFunction {
   public static void main(String[] args) {
 

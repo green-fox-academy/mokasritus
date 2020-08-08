@@ -1,3 +1,5 @@
+package arrays;
+
 public class DiagonalMatrix {
   public static void main(String[] args) {
     // - Create (dynamically) a two dimensional array

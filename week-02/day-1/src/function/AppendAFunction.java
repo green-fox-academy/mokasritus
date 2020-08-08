@@ -1,3 +1,5 @@
+package function;
+
 public class AppendAFunction {
   public static void main(String[] args) {
     //  Create the usual class wrapper

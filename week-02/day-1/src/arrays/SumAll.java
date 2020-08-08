@@ -1,3 +1,5 @@
+package arrays;
+
 public class SumAll {
   public static void main(String[] args) {
     // - Create an array variable named `numbers`
