@@ -9,6 +9,7 @@
         // Expected output: In a galaxy far far away
 
         System.out.println(example.replace("dishwasher", "galaxy"));
+        System.out.println(example2);
       }
     }
 
