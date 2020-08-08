@@ -38,6 +38,4 @@ public class Plant {
   public void watering(double wateringWaterAmount) {
     this.waterAmount += wateringWaterAmount;
   }
-
-
 }

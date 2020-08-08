@@ -13,5 +13,6 @@ public class DrawTriangle {
       }
       System.out.println("");
     }
+    System.out.println();
   }
 }

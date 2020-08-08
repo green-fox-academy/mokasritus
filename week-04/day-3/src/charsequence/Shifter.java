@@ -9,7 +9,6 @@ public class Shifter implements CharSequence {
   private String text;
 
   public Shifter(String text, int shifter) {
-
     this.text = shifter(text, shifter);
     System.out.println(this.text);
   }
@@ -30,11 +29,10 @@ public class Shifter implements CharSequence {
   }
 
   public String shifter(String text, int shifter) {
-    String shiftedString;
     String beforeShifter;
     String afterShifter;
     beforeShifter = text.substring(0, shifter);
     afterShifter = text.substring(shifter);
-    return shiftedString = afterShifter.concat(beforeShifter);
+    return afterShifter.concat(beforeShifter);
   }
 }

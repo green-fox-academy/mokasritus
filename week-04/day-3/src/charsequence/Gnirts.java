@@ -7,10 +7,10 @@ package charsequence;
 //so at the second position of "this example" there is a 'p'
 //In a main method try out all the methods
 
-public class Gnirts implements CharSequence{
+public class Gnirts implements CharSequence {
   private String text;
 
-  public Gnirts(String text){
+  public Gnirts(String text) {
     this.text = text;
   }
 
@@ -21,15 +21,14 @@ public class Gnirts implements CharSequence{
 
   @Override
   public char charAt(int index) {
-    return text.charAt(text.length()-index-1);
+    return text.charAt(text.length() - index - 1);
     //char[] stringChar = text.toCharArray();
     //return stringChar[stringChar.length-index-1];
   }
 
   @Override
   public CharSequence subSequence(int start, int end) {
-
-    return text.subSequence(text.length()-end, text.length()-start);
+    return text.subSequence(text.length() - end, text.length() - start);
   }
 
   //private String reverseString(String string) {

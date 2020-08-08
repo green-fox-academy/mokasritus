@@ -9,13 +9,13 @@ public class Bunnies {
     System.out.println(totalNumberOfEars(3));
   }
 
-  public static int totalNumberOfEars(int n) {
+  public static int totalNumberOfEars(int numberOfBunnies) {
     int earsOfOneBunny = 2;
-    if (n == 0) {
+    if (numberOfBunnies == 0) {
       return 0;
     } else {
       return earsOfOneBunny + totalNumberOfEars(
-          n - 1); // a lépések száma és minden lépésben hozzáadok plusz 2 nyuszifület
+          numberOfBunnies - 1); // a lépések száma és minden lépésben hozzáadok plusz 2 nyuszifület
     }
   }
 }

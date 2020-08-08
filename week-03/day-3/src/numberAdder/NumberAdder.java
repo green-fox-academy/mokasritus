@@ -5,7 +5,7 @@ package numberAdder;
 public class NumberAdder {
   public static void main(String[] args) {
 
-    System.out.println(numberAdder(3));
+    System.out.println(numberAdder(6));
   }
 
   public static int numberAdder(int n) {

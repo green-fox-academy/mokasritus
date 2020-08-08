@@ -38,5 +38,4 @@ public class Person {
   public void getGoal(){
     System.out.println("My goal is: Live for the moment!");
   }
-
 }

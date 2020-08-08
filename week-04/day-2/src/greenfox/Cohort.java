@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Cohort {
   private String name;
-  List<Student> students;
-  List<Mentor> mentors;
+  private List<Student> students;
+  private List<Mentor> mentors;
 
   public Cohort(String name) {
     this.name = name;

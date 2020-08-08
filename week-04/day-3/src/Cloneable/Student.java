@@ -24,9 +24,9 @@ public class Student extends Person {
   @Override
   public void introduce() {
     System.out.println(
-        "Hi, I'm " + super.getName() + ", a " + super.getAge() + " year old " + super.getGender() +
+        "Hi, I'm " + getName() + ", a " + super.getAge() + " year old " + super.getGender() +
             " from " + this.previousOrganisation + " who skipped " + skippedDays + " days from the course already."
-    );
+    );// super: constructor hívásnál, ha az ősosztályra hivatkozunk, vagy ha azonos nevű metódus van az ősön és a gyereken is és az őst akarom használni
   }
 
   public void skipDays(int numberOfDays){
@@ -35,7 +35,6 @@ public class Student extends Person {
 
   @Override
   public Student clone(){
-    return new Student(super.getName(), super.getAge(),super.getGender(), previousOrganisation);
+    return new Student(getName(), getAge(), getGender(), previousOrganisation);
   }
-
 }

@@ -24,14 +24,12 @@ public class Student extends Person {
   @Override
   public void introduce() {
     System.out.println(
-        "Hi, I'm " + super.getName() + ", a " + super.getAge() + " year old " + super.getGender() +
-            " from " + this.previousOrganisation + " who skipped " + skippedDays + " days from the course already."
+        "Hi, I'm " + getName() + ", a " + getAge() + " year old " + getGender() +
+            " from " + this.previousOrganisation + " who skipped " + this.skippedDays + " days from the course already."
     );
   }
 
   public void skipDays(int numberOfDays){
     this.skippedDays += numberOfDays;
   }
-
-
 }
