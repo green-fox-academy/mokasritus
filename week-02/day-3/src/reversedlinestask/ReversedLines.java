@@ -27,11 +27,9 @@ public class ReversedLines {
     }
     for (String line : allLines
     ) {
+      line+="\n";
       for (int i = line.length() - 1; i >= 0; i--) {
         temph += line.charAt(i);
-        if (i == 0) {
-          temph += "\n";
-        }
       }
     }
     reversedLines.add(temph);
