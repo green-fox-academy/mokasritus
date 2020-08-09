@@ -53,7 +53,7 @@ public class MapIntroduction2 {
     m.put("978-1-60309-453-5","Why Did We Trust Him");
 
     //Print whether there is an associated value with key 478-0-61159-424-8 or not
-    System.out.println(m.containsKey("478-0-61159-424-8"));
+    System.out.println(("478-0-61159-424-8"));
 
     //Print the value associated with key 978-1-60309-453-5
     System.out.println(m.get("978-1-60309-453-5"));
