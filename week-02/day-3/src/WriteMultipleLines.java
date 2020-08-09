@@ -14,17 +14,17 @@ public class WriteMultipleLines {
 // into the file and each line should read 'apple'
 // The function should not raise any errors if it could not write the file.
   public static void main(String[] args) {
-manipulateAFile("my-file5.txt", "paradicsom", 5);
+    manipulateAFile("my-file5.txt", "paradicsom", 5);
   }
-  public static void manipulateAFile (String location, String word, Integer number ) {
+
+  public static void manipulateAFile(String location, String word, Integer number) {
     List<String> content = new ArrayList();
-    for (int i = 0; i < number ; i++) {
+    for (int i = 0; i < number; i++) {
       content.add(word);
     }
-
-    try {Path filePath = Paths.get(location);
+    Path filePath = Paths.get(location);
+    try {
       Files.write(filePath, content);
-
     } catch (Exception e) {
       System.out.println("could not write the file");
     }
