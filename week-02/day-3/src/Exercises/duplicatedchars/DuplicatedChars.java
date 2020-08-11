@@ -1,4 +1,4 @@
-package reversedlinestask;
+package Exercises.duplicatedchars;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -7,18 +7,16 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReversedLines {
-
+public class DuplicatedChars {
   public static void main(String[] args) {
-    // Create a method that decrypts reversed-lines.txt
-    reverseLines("src/reversedlinestask/Reversed-lines.txt");
+    singleChars("Exercises\\duplicatedchars\\duplicated-chars.txt");
   }
 
-  public static void reverseLines(String file) {
-    Path filePath = Paths.get(file);
+  private static void singleChars(String path) {
+    Path filePath = Paths.get(path);
     String temph = "";
     List<String> allLines = null;
-    List<String> reversedLines = new ArrayList();
+    List<String> singleChars = new ArrayList();
     try {
       allLines = Files.readAllLines(filePath);
     } catch (Exception e) {
@@ -26,17 +24,18 @@ public class ReversedLines {
     }
     for (String line : allLines
     ) {
-      line+="\n";
-      for (int i = line.length() - 1; i >= 0; i--) {
-        temph += line.charAt(i);
-      }
+      for (int i = 0; i < line.length()-1; i++) {
+        if (line.charAt(i) == line.charAt(i + 1)) {
+          temph+=line.charAt(i);
+
+        }
+      }temph+="\n";
     }
-    reversedLines.add(temph);
+    singleChars.add(temph);
     try {
-      Files.write(filePath, reversedLines);
+      Files.write(filePath, singleChars);
     } catch (IOException e) {
       e.printStackTrace();
     }
   }
 }
-
