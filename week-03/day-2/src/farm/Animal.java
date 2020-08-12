@@ -5,10 +5,11 @@ public class Animal {
   private int thirst;
 
   public Animal(int hunger) {
-    this.hunger=hunger;
+    this.hunger = hunger;
     this.thirst = 50;
   }
-  public void eat () {
+
+  public void eat() {
     --hunger;
   }
 
@@ -27,5 +28,10 @@ public class Animal {
 
   public int getThirst() {
     return thirst;
+  }
+
+  @Override
+  public String toString() {
+    return "I am an animal, my hunger is: " + this.hunger;
   }
 }

@@ -18,9 +18,9 @@ public class Farm {
     slots = 4;
   }
 
-  public void breed() {
+  public void breed(Animal animal) {
     if (slots > 0) {
-      farm.add(new Animal((int) Math.random() * 100));
+      farm.add(animal);
       slots--;
       System.out.println("New animal breed");
     } else {
@@ -31,10 +31,12 @@ public class Farm {
   public void slaughter() {
     int leastHungry = 100;
     int indexOfLeastHungry = 0;
-    for (int i = 0; i < farm.size()-1; i++) {
-      if (farm.get(i).getHunger() < farm.get(i+1).getHunger()) {
-        leastHungry = farm.get(i).getHunger();
-        indexOfLeastHungry=farm.indexOf(farm.get(i));
+    for (int j = 0; j < farm.size() - 1; j++) {
+      for (int i = 0; i < farm.size() - 1; i++) {
+        if (farm.get(i).getHunger() < leastHungry) {
+          leastHungry = farm.get(i).getHunger();
+          indexOfLeastHungry = farm.indexOf(farm.get(i));
+        }
       }
     }
     farm.remove(indexOfLeastHungry);
@@ -45,11 +47,10 @@ public class Farm {
     return slots;
   }
 
-  public void printFarm(){
-    for (Animal animal:farm
-         ) {
-      System.out.println(animal.getHunger());
-
+  public void printFarm() {
+    for (Animal animal : farm
+    ) {
+      System.out.println(animal.toString());
     }
   }
 }

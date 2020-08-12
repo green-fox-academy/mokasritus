@@ -28,4 +28,10 @@ public class BlogPost {
   public String getPublicationDate() {
     return publicationDate;
   }
+
+  @Override
+  public String toString() {
+    return "\"" + this.title + "\" titled by " + this.authorName + " posted at " +
+        this.publicationDate + "\n\t" + this.text;
+  }
 }
