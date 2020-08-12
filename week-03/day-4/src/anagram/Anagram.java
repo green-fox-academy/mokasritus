@@ -1,4 +1,5 @@
 package anagram;
+
 import java.util.Arrays;
 
 //Write a function, that takes two strings and returns a boolean value based on
@@ -10,12 +11,12 @@ public class Anagram {
     System.out.println(isAnagram("béla", "léba"));
   }
 
-  public static boolean isAnagram(String input1, String input2){
-    char [] fromInput1 =input1.toCharArray();
-    char [] fromInput2 = input2.toCharArray();
+  public static boolean isAnagram(String input1, String input2) {
+    char[] fromInput1 = input1.toCharArray();
+    char[] fromInput2 = input2.toCharArray();
     Arrays.sort(fromInput1);
     Arrays.sort(fromInput2);
-    if (Arrays.equals(fromInput1,fromInput2)){
+    if (Arrays.equals(fromInput1, fromInput2)) {
       return true;
     } else {
       return false;
