@@ -11,7 +11,6 @@ public class Exercise5 {
 
     List<Integer> numbers = Arrays.asList(5, 9, 1, 2, 3, 7, 5, 6, 7, 3, 7, 6, 8, 5, 4, 9, 6, 2);
 
-
     int sumNumbers = numbers.stream()
         .filter(numb -> numb % 2 != 0)
         .mapToInt(numb -> numb)
