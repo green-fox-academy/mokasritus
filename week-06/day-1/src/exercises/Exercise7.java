@@ -13,9 +13,15 @@ public class Exercise7 {
         .asList("ROME", "LONDON", "NAIROBI", "CALIFORNIA", "ZURICH", "NEW DELHI", "AMSTERDAM",
             "ABU DHABI", "PARIS");
 
-    cities.stream()
-        .filter(city -> city.startsWith("N"))
-        .forEach(System.out::println);
+    String letter = "N";
 
+    searchCities(cities, letter);
+
+  }
+
+  private static void searchCities(List<String> cities, String letter) {
+    cities.stream()
+        .filter(city -> city.startsWith(letter))
+        .forEach(System.out::println);
   }
 }

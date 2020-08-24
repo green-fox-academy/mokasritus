@@ -5,8 +5,12 @@ package exercises;
 
 import static java.util.stream.Collectors.toMap;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Exercise9 {
   public static void main(String[] args) {
@@ -14,9 +18,13 @@ public class Exercise9 {
 
     Map<Character, Integer> frequencyOfCharacters = letters.chars().boxed()
         .collect(toMap(
-            key-> (char) key.intValue(),
-            value->1,
+            key -> (char) key.intValue(),
+            value -> 1,
             Integer::sum));
     System.out.println(frequencyOfCharacters);
+
+    Map<String, Long> frequencyOfCharacters2 = Arrays.stream(letters.split(""))
+        .collect(Collectors.groupingBy(letter->letter, Collectors.counting()));
+    System.out.println(frequencyOfCharacters2);
   }
 }
