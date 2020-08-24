@@ -1,10 +1,9 @@
-package excercises;
+package exercises;
 
 //Write a Stream Expression to get the even numbers from the following list:
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Exercise1 {
   public static void main(String[] args) {
