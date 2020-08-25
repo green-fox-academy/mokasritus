@@ -35,7 +35,7 @@ public class FoxMain {
     );
 
     Map<String, Long> frequencyByColor = foxes.stream()
-        .collect(Collectors.groupingBy(fox->fox.color, Collectors.counting()));
+        .collect(Collectors.groupingBy(fox -> fox.color, Collectors.counting()));
     System.out.println(frequencyByColor);
 
   }

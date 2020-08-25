@@ -1,0 +1,51 @@
+body{
+    background-color: whitesmoke;
+}
+
+form {
+    min-width: 300px;
+    background-color: white;
+    display: block;
+    align-content: center;
+    margin: 20%;
+    border-radius: 10px;
+    padding: 15%;
+}
+
+h1, label {
+    text-transform: uppercase;
+    color: darkslategrey;
+    display: block;
+}
+
+input{
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px 0;
+    border: 1px solid black;
+    border-radius: 2px;
+
+}
+input[type="text"]:focus{
+    border: 1px solid greenyellow;
+    outline: none;
+}
+a{
+    display: block;
+    justify-content: end;
+    padding: 0;
+
+}
+.question{
+    text-align: right;
+}
+
+button {
+    display: block;
+    background-color: darkslategrey;
+    padding: 10px 30px;
+    color: white;
+    margin-top: 10px;
+    border-radius: 15px;
+}
