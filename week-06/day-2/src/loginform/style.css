@@ -1,4 +1,4 @@
-body{
+body {
     background-color: whitesmoke;
 }
 
@@ -8,7 +8,7 @@ form {
     display: block;
     align-content: center;
     margin: 20%;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 15%;
 }
 
@@ -18,26 +18,33 @@ h1, label {
     display: block;
 }
 
-input{
+input {
     display: block;
     margin-bottom: 10px;
     width: 100%;
     padding: 10px 0;
     border: 1px solid black;
-    border-radius: 2px;
-
+    border-radius: 3px;
+    font-size: 20px;
 }
-input[type="text"]:focus{
+
+input[type="text"]:focus {
     border: 1px solid greenyellow;
     outline: none;
 }
-a{
+
+input[type="password"]{
+    background: url(assets/eyeicon.jpg) no-repeat;
+    background-position: right;
+   }
+
+a {
     display: block;
     justify-content: end;
     padding: 0;
-
 }
-.question{
+
+.question {
     text-align: right;
 }
 
