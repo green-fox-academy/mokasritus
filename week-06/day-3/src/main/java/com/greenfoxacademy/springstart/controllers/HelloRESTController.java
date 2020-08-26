@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloRESTController{
   AtomicLong greetingsCounter = new AtomicLong(0);
+
   /*@RequestMapping(value = "/greeting")
   public Greeting greeting() {
     return new Greeting(1, "Hello, World!");
