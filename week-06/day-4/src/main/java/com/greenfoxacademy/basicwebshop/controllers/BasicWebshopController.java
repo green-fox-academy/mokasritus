@@ -3,8 +3,11 @@ package com.greenfoxacademy.basicwebshop.controllers;
 import com.greenfoxacademy.basicwebshop.models.ShopItem;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -25,5 +28,17 @@ public class BasicWebshopController {
   public String getShopItems(Model model) {
     model.addAttribute("shopItems", shopItems);
     return "index";
+  }
+
+  @GetMapping("/only-available")
+  public String getOnlyAvailable(Model model){
+    List<ShopItem> onlyAvailableShopItems=findOnlyAvailable();
+    model.addAttribute("shopItems", onlyAvailableShopItems);
+    return "index";
+  }
+
+  private List<ShopItem> findOnlyAvailable() {
+    return shopItems.stream().filter(shopItem -> shopItem.getQuantityOfStock()>0).collect(
+        Collectors.toList());
   }
 }

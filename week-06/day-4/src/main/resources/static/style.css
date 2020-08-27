@@ -45,4 +45,8 @@ td.prices:after {
 .prices{
     font-size: larger;
 }
+button{
+    border:0;
+    background-color: unset;
+}
 
