@@ -6,13 +6,30 @@
     <link   rel="stylesheet" href="style.css">
 </head>
 <body>
+<header>
+    <h1>My Shop</h1>
+    <div class="links">
+    <a href="">only available</a>
+    <a href="">cheapest first</a>
+    <a href="">contains nike</a>
+    <a href="">average stock</a>
+    <a href="">most expensive available</a>
+    </div>
+</header>
 <table>
-    <td>
+    <tr>
         <th>Name</th>
         <th>Description</th>
         <th>Price</th>
         <th>Quantity of stock</th>
-    </td>
+    </tr>
+
+    <tr th:each="shopItems: ${shopItems}">
+        <td th:text="${shopItems.getName()}"></td>
+        <td th:text="${shopItems.getDescription()}"></td>
+        <td class="prices" th:text="${shopItems.getPrice()}"></td>
+        <td th:text="${shopItems.getQuantityOfStock()}"></td>
+    </tr>
 </table>
 </body>
 </html>

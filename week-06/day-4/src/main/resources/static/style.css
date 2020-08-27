@@ -1,0 +1,48 @@
+body{
+    width: 920px;
+    font-family: sans-serif;
+}
+
+h1{
+    color: deepskyblue;
+    border-bottom: 2px solid deepskyblue;
+}
+.links{
+    display: flex;
+    justify-content: space-between;
+}
+a {
+    text-transform: uppercase;
+    display: block;
+    padding: 10px 10px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+}
+table, th{
+    width: 100%;
+    border: 1px solid white;
+    border-collapse: collapse;
+    margin-top: 40px;
+}
+
+th{
+    width: auto;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: aqua;
+}
+td{
+    text-align: center;
+    padding: 10px;
+}
+td.prices:after {
+    content:' Kč';
+}
+.prices{
+    font-size: larger;
+}
+
