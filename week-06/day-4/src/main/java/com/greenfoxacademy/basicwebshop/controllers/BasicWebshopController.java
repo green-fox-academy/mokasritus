@@ -45,12 +45,26 @@ public class BasicWebshopController {
     return "index";
   }
 
+  @GetMapping("/contains-nike")
+  public String getContainsNike(Model model){
+    List<ShopItem> containsNike=
+        getContainsNike();
+    model.addAttribute("shopItems", containsNike);
+    return "index";
+  }
+
+  private List<ShopItem> getContainsNike() {
+    return shopItems.stream()
+    .filter(shopItem -> shopItem.getDescription().toLowerCase().contains("nike")|shopItem.getName().toLowerCase().contains("nike"))
+    .collect(Collectors.toList());
+  }
+
   private List<ShopItem> getCheapestFirst() {
     return shopItems.stream()
     .sorted(Comparator.comparingDouble(ShopItem::getPrice))
     .collect(Collectors.toList());
   }
-  
+
   private List<ShopItem> findOnlyAvailable() {
     return shopItems.stream().filter(shopItem -> shopItem.getQuantityOfStock()>0).collect(
         Collectors.toList());
