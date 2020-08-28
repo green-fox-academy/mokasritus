@@ -4,13 +4,9 @@ package exercises;
 //of characters in a given string!
 
 import static java.util.stream.Collectors.toMap;
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Exercise9 {
   public static void main(String[] args) {

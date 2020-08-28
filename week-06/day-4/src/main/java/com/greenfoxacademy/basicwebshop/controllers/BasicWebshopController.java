@@ -2,6 +2,7 @@ package com.greenfoxacademy.basicwebshop.controllers;
 
 import com.greenfoxacademy.basicwebshop.models.ShopItem;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -37,6 +38,19 @@ public class BasicWebshopController {
     return "index";
   }
 
+  @GetMapping("/cheapest-first")
+  public String getCheapestFirst(Model model){
+    List<ShopItem> cheapestFirstShopItems= getCheapestFirst();
+    model.addAttribute("shopItems", cheapestFirstShopItems);
+    return "index";
+  }
+
+  private List<ShopItem> getCheapestFirst() {
+    return shopItems.stream()
+    .sorted(Comparator.comparingDouble(ShopItem::getPrice))
+    .collect(Collectors.toList());
+  }
+  
   private List<ShopItem> findOnlyAvailable() {
     return shopItems.stream().filter(shopItem -> shopItem.getQuantityOfStock()>0).collect(
         Collectors.toList());
