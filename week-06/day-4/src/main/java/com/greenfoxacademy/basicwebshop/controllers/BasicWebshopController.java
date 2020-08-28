@@ -4,7 +4,6 @@ import com.greenfoxacademy.basicwebshop.models.ShopItem;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,7 +39,7 @@ public class BasicWebshopController {
 
   @GetMapping("/cheapest-first")
   public String getCheapestFirst(Model model){
-    List<ShopItem> cheapestFirstShopItems= getCheapestFirst();
+    List<ShopItem> cheapestFirstShopItems= putCheapestFirst();
     model.addAttribute("shopItems", cheapestFirstShopItems);
     return "index";
   }
@@ -48,18 +47,31 @@ public class BasicWebshopController {
   @GetMapping("/contains-nike")
   public String getContainsNike(Model model){
     List<ShopItem> containsNike=
-        getContainsNike();
+        filterNike();
     model.addAttribute("shopItems", containsNike);
     return "index";
   }
 
-  private List<ShopItem> getContainsNike() {
+  @GetMapping("/average-stock")
+  public String getAverageStock(Model model){
+    model.addAttribute("average", calculateAverage());
+    return "averagestock";
+  }
+
+  private Double calculateAverage() {
+    return shopItems.stream()
+    .mapToDouble(shopItem -> shopItem.getQuantityOfStock())
+    .average()
+    .getAsDouble();
+  }
+
+  private List<ShopItem> filterNike() {
     return shopItems.stream()
     .filter(shopItem -> shopItem.getDescription().toLowerCase().contains("nike")|shopItem.getName().toLowerCase().contains("nike"))
     .collect(Collectors.toList());
   }
 
-  private List<ShopItem> getCheapestFirst() {
+  private List<ShopItem> putCheapestFirst() {
     return shopItems.stream()
     .sorted(Comparator.comparingDouble(ShopItem::getPrice))
     .collect(Collectors.toList());
