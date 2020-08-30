@@ -15,11 +15,10 @@ public class Exercise7 {
 
     String letter = "N";
 
-    searchCities(cities, letter);
-
+    printCitiesWithStartingLetter(cities, letter);
   }
 
-  private static void searchCities(List<String> cities, String letter) {
+  private static void printCitiesWithStartingLetter(List<String> cities, String letter) {
     cities.stream()
         .filter(city -> city.startsWith(letter))
         .forEach(System.out::println);

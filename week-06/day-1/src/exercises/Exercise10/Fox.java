@@ -1,4 +1,4 @@
-package Exercise10;
+package exercises.Exercise10;
 
 //Create a Fox class with 3 properties:name, color and age Fill a list with at least 5 foxes and:
 //

@@ -9,10 +9,10 @@ import java.util.stream.Collectors;
 
 public class Exercise6 {
   public static void main(String[] args) {
-    String findUpperCaseLetters = "AbnvK";
+    String text = "AbnvK";
 
 
-    String upperCaseLetter= findUpperCaseLetters.chars()
+    String upperCaseLetter= text.chars()
         .filter(Character::isUpperCase)
         .mapToObj(charact->Character.toString((char)charact))
         .collect(Collectors.joining());
