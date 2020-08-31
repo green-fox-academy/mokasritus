@@ -12,12 +12,14 @@
         <th>Name</th>
         <th>Balance</th>
         <th>Animal type</th>
+        <th>Index in List</th>
     </tr>
     </thead>
     <tr th:each="bankAccount: ${bankAccounts}" >
         <td th:text="${bankAccount.name}"></td>
         <td th:text="|${#numbers.formatDecimal(bankAccount.balance, 0, 2, 'POINT')} Zebra|"></td>
         <td th:text="${bankAccount.animalType}"></td>
+        <td th:text="${bankAccountStat.index}"></td>
     </tr>
 </table>
 </body>
