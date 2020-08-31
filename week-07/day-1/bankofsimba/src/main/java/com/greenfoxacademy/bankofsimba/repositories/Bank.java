@@ -12,11 +12,11 @@ public class Bank {
   public Bank() {
     bankAccounts = new ArrayList<>();
 
-    bankAccounts.add(new BankAccount("Pumba", 300, "wharthog"));
-    bankAccounts.add(new BankAccount("Timon", 1500, "african meerkat"));
-    bankAccounts.add(new BankAccount("Musfasa", 1000, "lion"));
-    bankAccounts.add(new BankAccount("Kamari", 700, "Hyena"));
-    bankAccounts.add(new BankAccount("Azizi", 700, "Hyena"));
+    bankAccounts.add(new BankAccount("Pumba", 300, "wharthog", false));
+    bankAccounts.add(new BankAccount("Timon", 1500, "african meerkat", false));
+    bankAccounts.add(new BankAccount("Musfasa", 1000, "lion", true));
+    bankAccounts.add(new BankAccount("Kamari", 700, "Hyena", false));
+    bankAccounts.add(new BankAccount("Azizi", 700, "Hyena", false));
   }
 
   public List<BankAccount> getBankAccounts() {
