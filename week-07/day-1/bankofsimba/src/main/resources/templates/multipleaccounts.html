@@ -15,6 +15,7 @@
         <th>Animal type</th>
         <th>Index in List</th>
         <th>Is King?</th>
+        <th>Bad or good guy?</th>
     </tr>
     </thead>
     <tr th:each="bankAccount: ${bankAccounts}">
@@ -24,6 +25,8 @@
         <td th:text="${bankAccountStat.index}"></td>
         <td th:style="${bankAccount.isKing()==true ? 'color:red;' : 'color:black;' }"
             th:text="${bankAccount.isKing()}"></td>
+        <td th:text="${bankAccountStat.index}"></td>
+
     </tr>
 </table>
 

@@ -19,6 +19,7 @@ public class BankAccount {
     this.isKing = isKing;
     this.balance = balance;
     this.animalType = animalType;
+
   }
 
   public String getName() {
