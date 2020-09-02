@@ -66,14 +66,14 @@ public class UtilityController {
 // - For encoding use the `number` value, for decoding use the `-number` value when calling the caesar() method.
 //     - As a rule of usage: you cannot give negative value for the 'number' query param
 
-  @RequestMapping(value="/useful/encoder")
-  public String ceaserEncoder(Model model, @RequestParam String text, @RequestParam int number){
-   model.addAttribute("encodedText", utilityService.caesar(text, number));
-   return "mainpage";
+  @RequestMapping(value = "/useful/encoder")
+  public String ceaserEncoder(Model model, @RequestParam String text, @RequestParam int number) {
+    model.addAttribute("encodedText", utilityService.caesar(text, number));
+    return "mainpage";
   }
 
-  @RequestMapping(value="/useful/decoder")
-  public String ceaserDecoder(Model model, @RequestParam String text, @RequestParam int number){
+  @RequestMapping(value = "/useful/decoder")
+  public String ceaserDecoder(Model model, @RequestParam String text, @RequestParam int number) {
     model.addAttribute("decodedText", utilityService.caesar(text, -number));
     return "mainpage";
   }

@@ -30,14 +30,13 @@ public class UtilityService {
   // - Create a `validateEmail()` method in the `UtilityService`
 //     - check if the string contains a `@` and a `.`
 
-  public String validateEmail(String email){
-    if (email.contains("@")&&email.contains(".")){
+  public String validateEmail(String email) {
+    if (email.contains("@") && email.contains(".")) {
       return "green";
     } else {
       return "red";
     }
   }
-
 
   public String caesar(String text, int number) {
     if (number < 0) {

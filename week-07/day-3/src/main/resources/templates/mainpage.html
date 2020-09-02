@@ -6,11 +6,11 @@
 </head>
 <body>
 <div>
-<a href="/useful">All utilities</a>
-<a href="/useful/colored">Colored background</a>
-<a href="/useful/email?email=is@this.valid">Email validator</a>
-<a href="/useful/encoder?text=writeHereYourText&&number=3">Ceasar encoder</a>
-<a href="/useful/decoder?text=writeHereYourText&&number=3">Ceasar decoder</a>
+    <a href="/useful">All utilities</a>
+    <a href="/useful/colored">Colored background</a>
+    <a href="/useful/email?email=is@this.valid">Email validator</a>
+    <a href="/useful/encoder?text=writeHereYourText&&number=3">Ceasar encoder</a>
+    <a href="/useful/decoder?text=writeHereYourText&&number=3">Ceasar decoder</a>
 </div>
 <p th:text="${message}" th:style="'color: ' + ${color}"></p>
 <p th:text="${encodedText}"></p>
