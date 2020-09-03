@@ -67,13 +67,13 @@ public class UtilityController {
 //     - As a rule of usage: you cannot give negative value for the 'number' query param
 
   @RequestMapping(value = "/useful/encoder")
-  public String ceaserEncoder(Model model, @RequestParam String text, @RequestParam int number) {
+  public String ceaserEncoder(Model model, @RequestParam (required=false) String text, @RequestParam(required=false) int number) {
     model.addAttribute("encodedText", utilityService.caesar(text, number));
     return "mainpage";
   }
 
   @RequestMapping(value = "/useful/decoder")
-  public String ceaserDecoder(Model model, @RequestParam String text, @RequestParam int number) {
+  public String ceaserDecoder(Model model, @RequestParam (required=false) String text, @RequestParam(required=false) int number) {
     model.addAttribute("decodedText", utilityService.caesar(text, -number));
     return "mainpage";
   }
