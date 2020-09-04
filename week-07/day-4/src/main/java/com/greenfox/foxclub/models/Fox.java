@@ -9,18 +9,13 @@ public class Fox {
   private Food food;
   private Drink drink;
 
+
+
   public Fox(String name) {
     this.name = name;
-    drink=new Drink("water");
-    food=new Food("onion");
-  }
-
-   public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
+    this.drink =Drink.chokolatemilk;
+    this.food = Food.brownie;
+    tricks = new ArrayList<>();
   }
 
   public Food getFood() {
@@ -29,6 +24,14 @@ public class Fox {
 
   public void setFood(Food food) {
     this.food = food;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public Drink getDrink() {
@@ -47,3 +50,4 @@ public class Fox {
     this.tricks = tricks;
   }
 }
+

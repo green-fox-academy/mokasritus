@@ -8,10 +8,11 @@
 <div>
     <ul>
     <li><a href="/information">Information</a></li>
+    <li><a href="/nutritionStore">Nutrition store</a></li>
     </ul>
     <img src="greenfox.png" alt="greenfox">
 </div>
-<p th:text="'This is ' + ${myFox.getName()} + '. Currently living on ' + ${myFox.getFood().getName()}+ ' and ' + ${myFox.getDrink().getName()}
+<p th:text="'This is ' + ${myFox.getName()} + '. Currently living on ' + ${myFox.getFood()}+ ' and ' + ${myFox.getDrink()}
 + '. He knows ' + (${myFox.getTricks()==null} ? '0 tricks' : (${myFox.getTricks().size()}) + ' tricks.')"></p>
 <h1>Known tricks</h1>
 <div  th:if="!${#lists.isEmpty(myFox.getTricks())}">

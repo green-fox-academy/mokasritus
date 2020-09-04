@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 public class ServiceFox{
   private List<Fox> foxes;
 
+
   public ServiceFox() {
     this.foxes = new ArrayList<>();
   }
