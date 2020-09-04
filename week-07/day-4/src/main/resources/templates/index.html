@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Information page</title>
@@ -7,15 +7,18 @@
 <body>
 <div>
     <ul>
-    <li><a href="">Information</a></li>
+    <li><a href="/information">Information</a></li>
     </ul>
     <img src="greenfox.png" alt="greenfox">
 </div>
-<p>This is Mr. Fox. Currently living on pizza and lemonade. He knows 2 tricks.</p>
+<p th:text="'This is ' + ${myFox.getName()} + '. Currently living on ' + ${myFox.getFood().getName()}+ ' and ' + ${myFox.getDrink().getName()}
++ '. He knows ' + (${myFox.getTricks()==null} ? '0 tricks' : (${myFox.getTricks().size()}) + ' tricks.')"></p>
 <h1>Known tricks</h1>
-<ul>
-    <li>write HTML</li>
-    <li>code in Java</li>
+<div  th:if="!${#lists.isEmpty(myFox.getTricks())}">
+<ul th:each="trick : ${myFox.getTricks()}">
+    <li th:text="${trick.getName()}"></li>
 </ul>
+</div>
+<div th:if="${#lists.isEmpty(myFox.getTricks())}">You know no tricks, yet. Go and learn some more.</div>
 </body>
 </html>
