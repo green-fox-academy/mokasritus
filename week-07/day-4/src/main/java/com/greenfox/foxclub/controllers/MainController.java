@@ -37,7 +37,7 @@ public class MainController {
 
   @PostMapping(value = "/login")
   //html form action=""-ben hívjuk meg + a megfelelő method=Post-al
-  public String addNewFox( @RequestParam String name, Fox newFox) {
+  public String addNewFox(@RequestParam String name, Fox newFox) {
     service.addFox(newFox);
     return "redirect:/?name=" + newFox.getName();
   }

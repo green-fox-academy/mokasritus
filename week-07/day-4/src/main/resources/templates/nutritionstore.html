@@ -7,21 +7,23 @@
 <body>
 <div th:insert="sidebar.html :: sidebar"></div>
 <form action="/nutritionStore" method="POST">
-    <label for="drink">Food</label>
-    <select  id="food" name="food">
-
+    <label for="food">Food</label>
+    <select id="food" name="food">
+        <option value="" selected disabled></option>
         <option th:each="food : ${foods}"
                 th:value="${food}"
                 th:text="${food}"></option>
-        <!--th:selected="${drink.chokolatemilk}"-->
     </select>
     <label for="drink">Drink</label>
-    <select  id="drink" name="drink">
+    <select id="drink" name="drink">
+        <option value="" selected disabled></option>
+        <!-- ez adja meg hogy a legördülő menü alapból ne válasszon ki semmit ha >Valami</option> akkor Valami lesz az alap-->
         <option th:each="drink : ${drinks}"
                 th:value="${drink}"
                 th:text="${drink}"/>
     </select>
     <input type="submit" value="Change"/>
+    <!--value="" adja meg a gomb feliratát-->
 </form>
 </body>
 </html>

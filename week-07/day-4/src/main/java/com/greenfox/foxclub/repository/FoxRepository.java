@@ -25,7 +25,7 @@ public class FoxRepository {
   public Fox findFoxByName(String name) {
     int foxIndex = 0;
     for (int i = 0; i < foxes.size(); i++) {
-      if (foxes.get(i).getName() == name) {
+      if (foxes.get(i).getName().equals(name)) {
         foxIndex = i;
       }
     }

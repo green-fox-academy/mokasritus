@@ -31,6 +31,7 @@ public class ServiceFox{
   public void chooseFoodAndDrink(String name,String food, String drink) {
     searchFoxWithName(name).setFood(Food.valueOf(food));
     searchFoxWithName(name).setDrink(Drink.valueOf(drink));
+    //enum értékének beállítása, DE a food-nak pontosan egyeznie kell az enum egyik értékével
   }
 
   public Fox searchFoxWithName(String name) {

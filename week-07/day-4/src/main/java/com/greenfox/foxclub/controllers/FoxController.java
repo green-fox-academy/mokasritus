@@ -24,6 +24,7 @@ public class FoxController {
   public String renderNutritionPage(Model model, @RequestParam(required = false) String name) {
     Fox myFox = serviceFox.searchFoxWithName(name);
     model.addAttribute("name", myFox.getName());
+    //kell hogy a nevet visszaadjuk az url-nek, különben name=null lesz
     model.addAttribute("foods", Food.class.getEnumConstants());
     model.addAttribute("drinks", Drink.class.getEnumConstants());
     return "nutritionstore";
@@ -31,10 +32,9 @@ public class FoxController {
 
   @PostMapping(value = "/nutritionStore")
   public String chooseFoodAndDrink(@RequestParam(required = false) String name, String food, String drink) {
+    //nem kell Model model mivel nem adunk át infót egy POST-os metód alatt a html-nek
     Fox myFox = serviceFox.searchFoxWithName(name);
     serviceFox.chooseFoodAndDrink(name, food, drink);
     return "redirect:/?name=" + name;
   }
-
-
 }
