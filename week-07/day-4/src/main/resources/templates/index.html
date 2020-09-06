@@ -5,20 +5,15 @@
     <title>Information page</title>
 </head>
 <body>
-<div>
-    <ul>
-    <li><a href="/information">Information</a></li>
-    <li><a href="/nutritionStore">Nutrition store</a></li>
-    </ul>
-    <img src="greenfox.png" alt="greenfox">
-</div>
+<div th:insert="sidebar.html :: sidebar"></div>
+<img src="greenfox.png" alt="greenfox">
 <p th:text="'This is ' + ${myFox.getName()} + '. Currently living on ' + ${myFox.getFood()}+ ' and ' + ${myFox.getDrink()}
 + '. He knows ' + (${myFox.getTricks()==null} ? '0 tricks' : (${myFox.getTricks().size()}) + ' tricks.')"></p>
 <h1>Known tricks</h1>
-<div  th:if="!${#lists.isEmpty(myFox.getTricks())}">
-<ul th:each="trick : ${myFox.getTricks()}">
-    <li th:text="${trick.getName()}"></li>
-</ul>
+<div th:if="!${#lists.isEmpty(myFox.getTricks())}">
+    <ul th:each="trick : ${myFox.getTricks()}">
+        <li th:text="${trick.getName()}"></li>
+    </ul>
 </div>
 <div th:if="${#lists.isEmpty(myFox.getTricks())}">You know no tricks, yet. Go and learn some more.</div>
 </body>

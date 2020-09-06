@@ -12,44 +12,34 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
-  private ServiceFox serviceFox;
+  private ServiceFox service;
 
   @Autowired
-  public MainController(ServiceFox serviceFox) {
-    this.serviceFox = serviceFox;
+  public MainController(ServiceFox service) {
+    this.service = service;
   }
 
-  @RequestMapping(value = "/")
-  public String showMainPage(Model model, @RequestParam(required = false) String name) {
-    Fox myFox = findFoxWithName(name);
+  //megadhatok több endpointot is egyszerre {"", "", ...} formában
+  @RequestMapping(value = {"/", "/information"})
+  public String renderMainPage(Model model, @RequestParam(required = false) String name) {
+    Fox myFox = service.searchFoxWithName(name);
     model.addAttribute("myFox", myFox);
+    model.addAttribute("name", myFox.getName());
     return "index";
   }
 
   @GetMapping(value = "/login")
-  public String login() {
+  public String login(Model model) {
+    model.addAttribute("fox", new Fox());
+    //odaadunk a login html-nek egy új üres Fox-ot th:object"${fox}" -al hívjuk meg a formban
     return "login";
   }
 
   @PostMapping(value = "/login")
-  public String addNewFox(Model model, @RequestParam String name) {
-    if (checkFoxIsExist(name)) {
-      return "redirect:/?name=" + name;
-    }
-    serviceFox.addFox(name);
-    return "redirect:/?name=" + name;
+  //html form action=""-ben hívjuk meg + a megfelelő method=Post-al
+  public String addNewFox( @RequestParam String name, Fox newFox) {
+    service.addFox(newFox);
+    return "redirect:/?name=" + newFox.getName();
   }
 
-  /*@GetMapping(value="/information")
-  public String showMyFox(Model model, @RequestParam(required = false) String name){
-    return "index";
-  }*/
-
-  private Fox findFoxWithName(String name) {
-    return serviceFox.getFoxes().stream().filter(fox -> fox.getName().equals(name)).findFirst().get();
-  }
-
-  private Boolean checkFoxIsExist(String name){
-    return serviceFox.getFoxes().stream().anyMatch(fox -> fox.getName().equals(name));
-  }
 }

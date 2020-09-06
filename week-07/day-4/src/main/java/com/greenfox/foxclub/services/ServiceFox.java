@@ -1,29 +1,47 @@
 package com.greenfox.foxclub.services;
 
+import com.greenfox.foxclub.models.Drink;
+import com.greenfox.foxclub.models.Food;
 import com.greenfox.foxclub.models.Fox;
-import java.util.ArrayList;
+import com.greenfox.foxclub.repository.FoxRepository;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service //ezen keresztül használjuk a repot, classokat, manipulál
 public class ServiceFox{
-  private List<Fox> foxes;
+  private FoxRepository repository;
 
-
-  public ServiceFox() {
-    this.foxes = new ArrayList<>();
+@Autowired
+  public ServiceFox(FoxRepository repository) {
+  this.repository=repository;
   }
 
-  public List<Fox> getFoxes() {
-    return foxes;
+  public List<Fox> getAllFoxes() {
+    return repository.getFoxes();
   }
 
-  public void setFoxes(List<Fox> foxes) {
-    this.foxes = foxes;
+
+
+  public void addFox(Fox newFox){
+    if (!checkFoxIsExist(newFox))
+      repository.save(newFox);
   }
 
-  public void addFox(String name){
-    foxes.add(new Fox(name));
+  public void chooseFoodAndDrink(String name,String food, String drink) {
+    searchFoxWithName(name).setFood(Food.valueOf(food));
+    searchFoxWithName(name).setDrink(Drink.valueOf(drink));
   }
+
+  public Fox searchFoxWithName(String name) {
+      return repository.findFoxByName(name);
+  }
+
+
+  public Boolean checkFoxIsExist(Fox newFox) {
+    return getAllFoxes().stream().anyMatch(fox -> fox.getName().equals(newFox.getName()));
+  }
+
+
 
 }

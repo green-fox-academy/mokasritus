@@ -9,7 +9,11 @@ public class Fox {
   private Food food;
   private Drink drink;
 
-
+  public Fox() {
+    this.drink =Drink.chokolatemilk;
+    this.food = Food.brownie;
+    tricks = new ArrayList<>();
+  }
 
   public Fox(String name) {
     this.name = name;

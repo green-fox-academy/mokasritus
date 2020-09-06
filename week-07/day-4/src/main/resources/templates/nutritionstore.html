@@ -2,9 +2,26 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Nutrition strore</title>
+    <title>Nutrition store</title>
 </head>
 <body>
+<div th:insert="sidebar.html :: sidebar"></div>
+<form action="/nutritionStore" method="POST">
+    <label for="drink">Food</label>
+    <select  id="food" name="food">
 
+        <option th:each="food : ${foods}"
+                th:value="${food}"
+                th:text="${food}"></option>
+        <!--th:selected="${drink.chokolatemilk}"-->
+    </select>
+    <label for="drink">Drink</label>
+    <select  id="drink" name="drink">
+        <option th:each="drink : ${drinks}"
+                th:value="${drink}"
+                th:text="${drink}"/>
+    </select>
+    <input type="submit" value="Change"/>
+</form>
 </body>
 </html>
