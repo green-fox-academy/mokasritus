@@ -5,7 +5,10 @@
     <title>Nutrition store</title>
 </head>
 <body>
+
 <div th:insert="sidebar.html :: sidebar"></div>
+<!--fragment-be ki lett pakolva az ismétlődő link lista-->
+
 <form action="/nutritionStore" method="POST">
     <label for="food">Food</label>
     <select id="food" name="food">

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todos</title>
+</head>
+<body>
+<div>
+    <h1>Todos</h1>
+    <form action="">
+        <label for="newtodo"><h3>New todo</h3></label>
+        <input placeholder="Remember everything" type="text" id="newtodo" name="newtodo">
+        <input type="submit" value="Add">
+    </form>
+    <table>
+        <thread>
+            <tr>
+                <th>Todo</th>
+                <th>Actions</th>
+            </tr>
+        </thread>
+        <tr th:each="todo : ${todos}" th:object="todo">
+            <td th:text="*{getName()}"></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
