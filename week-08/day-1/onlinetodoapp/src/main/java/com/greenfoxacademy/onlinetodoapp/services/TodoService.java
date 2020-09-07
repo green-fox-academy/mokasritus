@@ -18,4 +18,16 @@ public class TodoService {
   public List<Todo> getAllTodo(){
     return repository.getTodos();
   }
+
+  public void addTodo(Todo newTodo) {
+    repository.addTodo(newTodo);
+  }
+
+  public void removeTodoById(int productId) {
+    repository.removeTodoById(productId);
+  }
+
+  public void completeTodo(int productId) {
+    repository.completeTodo(productId);
+  }
 }

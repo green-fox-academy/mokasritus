@@ -16,4 +16,27 @@ public class TodoRepository {
   public List<Todo> getTodos() {
     return todos;
   }
+
+  public void addTodo(Todo newTodo) {
+    todos.add(newTodo);
+  }
+
+  public void removeTodoById(int productId) {
+    todos.remove(findTodoById(productId));
+  }
+
+  public void completeTodo(int productId) {
+    todos.get(findTodoById(productId)).setIsComplete(true);
+  }
+
+  private int findTodoById(int productId) {
+    int index = 0;
+    for (int i = 0; i < todos.size(); i++) {
+      if (todos.get(i).getId() == productId) {
+        index = i;
+        break;
+      }
+    }
+    return index;
+  }
 }
