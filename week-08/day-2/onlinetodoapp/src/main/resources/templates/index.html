@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todos</title>
+</head>
+<body>
+<div>
+    <h1>Todos</h1>
+    <form th:object="${newtodo}" action="/add" method="post">
+        <label for="newtodo" th:style="'font-size: 25px;'">New todo</label>
+        <input placeholder="Remember everything" type="text"
+               id="newtodo" th:field="*{title}">
+        <input type="submit" value="Add">
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Todo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tr th:each="todo : ${todos}" th:object="${todo}">
+            <td th:text="*{getId()}"></td>
+            <td th:style="*{isComplete()==true ? 'text-decoration: line-through;' : 'text-decoration: none;'}"
+                th:text="*{getTitle()}"></td>
+            <td>
+                <form th:action="'/complete/?productId=' + *{getId()}" method="post">
+                    <button type="submit" th:value="*{getId()}">Complete</button>
+                </form>
+                <form th:action="'/remove/?productId=' + *{getId()}" method="post">
+                    <button type="submit"  th:value="*{getId()}">Remove</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
