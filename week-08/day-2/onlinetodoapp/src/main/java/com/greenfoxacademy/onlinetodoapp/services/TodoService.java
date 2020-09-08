@@ -35,7 +35,9 @@ public class TodoService {
   }
 
   public void completeTodo(long productId) {
-          getProductById(productId).setIsComplete(true);
+    Todo modifiedTodo= getProductById(productId);
+    modifiedTodo.setIsComplete(true);
+    repository.save(modifiedTodo);
   }
 
   public Todo getProductById(long productId) {

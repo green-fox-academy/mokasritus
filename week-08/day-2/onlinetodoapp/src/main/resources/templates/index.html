@@ -18,12 +18,14 @@
             <tr>
                 <th>ID</th>
                 <th>Todo</th>
+                <th>Done</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tr th:each="todo : ${todos}" th:object="${todo}">
             <td th:text="*{getId()}"></td>
-            <td th:style="*{isComplete()==true ? 'text-decoration: line-through;' : 'text-decoration: none;'}"
+            <td th:text="*{isComplete()}"></td>
+            <td th:style="*{isComplete()}==true ? 'text-decoration: line-through;' : 'text-decoration: none;'"
                 th:text="*{getTitle()}"></td>
             <td>
                 <form th:action="'/complete/?productId=' + *{getId()}" method="post">
