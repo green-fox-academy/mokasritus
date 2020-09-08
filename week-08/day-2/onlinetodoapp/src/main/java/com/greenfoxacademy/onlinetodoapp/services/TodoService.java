@@ -38,6 +38,7 @@ public class TodoService {
     Todo modifiedTodo= getProductById(productId);
     modifiedTodo.setIsComplete(true);
     repository.save(modifiedTodo);
+    //adatbázis használatánál amikor egy Object fieldjén változtatunk mindig kell egy mentés az adott metódba
   }
 
   public Todo getProductById(long productId) {
