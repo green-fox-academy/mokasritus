@@ -1,7 +1,8 @@
 package com.greenfox.foxclub.controllers;
 
 import com.greenfox.foxclub.models.Fox;
-import com.greenfox.foxclub.services.ServiceFox;
+import com.greenfox.foxclub.services.FoxService;
+import com.greenfox.foxclub.services.TrickService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,17 +13,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
-  private ServiceFox service;
+  private FoxService foxService;
+  private TrickService trickService;
 
   @Autowired
-  public MainController(ServiceFox service) {
-    this.service = service;
+  public MainController(FoxService foxService, TrickService trickService) {
+    this.foxService = foxService;
+    this.trickService = trickService;
   }
 
   //megadhatok több endpointot is egyszerre {"", "", ...} formában
   @RequestMapping(value = {"/", "/information"})
   public String renderMainPage(Model model, @RequestParam(required = false) String name) {
-    Fox myFox = service.searchFoxWithName(name);
+    Fox myFox = foxService.searchFoxWithName(name);
     model.addAttribute("myFox", myFox);
     model.addAttribute("name", myFox.getName());
     return "index";
@@ -38,8 +41,24 @@ public class MainController {
   @PostMapping(value = "/login")
   //html form action=""-ben hívjuk meg + a megfelelő method=Post-al
   public String addNewFox(@RequestParam String name, Fox newFox) {
-    service.addFox(newFox);
+    foxService.addFox(newFox);
     return "redirect:/?name=" + newFox.getName();
   }
 
+  @GetMapping(value = "/trickCenter")
+  public String renderTrickCenterPage(Model model, @RequestParam(required = false) String name) {
+    Fox myFox = foxService.searchFoxWithName(name);
+    model.addAttribute("name", myFox.getName());
+    //kell hogy a nevet visszaadjuk az url-nek, különben name=null lesz
+    model.addAttribute("tricks", trickService.getAllTricks());
+    return "trickCenter";
+  }
+
+  @PostMapping(value = "/trickCenter")
+  public String chooseTrickToLearn(@RequestParam(required = false) String name, String trickToLearn) {
+    //nem kell Model model mivel nem adunk át infót egy POST-os metód alatt a html-nek
+    Fox myFox = foxService.searchFoxWithName(name);
+    //foxService.addTrickToLearn(name, trickToLearn);
+    return "redirect:/?name=" + name;
+  }
 }

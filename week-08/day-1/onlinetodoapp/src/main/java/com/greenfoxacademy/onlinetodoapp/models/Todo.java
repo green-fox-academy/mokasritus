@@ -5,11 +5,16 @@ public class Todo {
   private boolean isComplete;
   private int id;
 
-  private static int idCounter=0;
+  //private static int idCounter=0;
+
+
 
   public Todo() {
     isComplete = false;
-    id=idCounter++;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   public void setName(String name) {

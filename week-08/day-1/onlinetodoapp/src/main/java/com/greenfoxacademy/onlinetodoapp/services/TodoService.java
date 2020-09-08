@@ -20,6 +20,9 @@ public class TodoService {
   }
 
   public void addTodo(Todo newTodo) {
+    int maxId = getAllTodo().stream().mapToInt(todo->todo.getId()).max().orElse(0);
+    //maxId+1
+    newTodo.setId(maxId+1);
     repository.addTodo(newTodo);
   }
 

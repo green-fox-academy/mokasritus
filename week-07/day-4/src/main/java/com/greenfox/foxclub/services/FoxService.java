@@ -9,11 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service //ezen keresztül használjuk a repot, classokat, manipulál
-public class ServiceFox{
+public class FoxService {
   private FoxRepository repository;
 
 @Autowired
-  public ServiceFox(FoxRepository repository) {
+  public FoxService(FoxRepository repository) {
   this.repository=repository;
   }
 
