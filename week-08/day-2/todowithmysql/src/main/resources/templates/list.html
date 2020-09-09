@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Todolist</title>
+
+</head>
+<body>
+<div div class="container">
+    <h1>Todos for today:</h1>
+       <table  class="table table-striped table-sm table-bordered table-hover">
+        <thead class="thead-light" >
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">ACTION</th>
+            <th scope="col">DONE</th>
+            <th scope="col">URGENT</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tr th:each="todo : ${todos}" th:object="${todo}">
+            <td scope="row" th:text="*{getId()}"></td>
+            <td scope="row" th:style="*{isComplete()}==true ? 'text-decoration: line-through;' : 'text-decoration: none;'"
+                th:text="*{getTitle()}"></td>
+            <td scope="row" th:text="*{isComplete()}"></td>
+            <td scope="row" th:text="*{isUrgent()}"></td>
+            <td>
+                <form th:action="'/complete/?productId=' + *{getId()}" method="post">
+                    <button type="submit" th:value="*{getId()}">Complete</button>
+                </form>
+                <form th:action="'/remove/?productId=' + *{getId()}" method="post">
+                    <button type="submit"  th:value="*{getId()}">Remove</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
