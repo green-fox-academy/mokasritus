@@ -19,7 +19,7 @@ public class TodoController {
   }
 
   @GetMapping(value={"/todo"})
-  public String list(Model model){
+  public String listAllTodo(Model model){
     model.addAttribute("todos", todoService.getAllTodo());
     return "index";
   }
@@ -31,10 +31,14 @@ public class TodoController {
   }
 
   @GetMapping(value ="/add")
-  public String renderTodoPage(Model model) {
-    model.addAttribute("todos", todoService.getAllTodo());
+  public String renderAddPage(Model model) {
     model.addAttribute("newtodo", new Todo());
     return "add";
+  }
+
+  @PostMapping(value="/search")
+  public String searchTodo(String text, Model model){
+        model.addAttribute("foundTodo", todoService.searchTodo(text));
   }
 
   @PostMapping(value="/add")
@@ -54,5 +58,4 @@ public class TodoController {
     todoService.removeTodoById(productId);
     return "redirect:/list";
   }
-
 }
