@@ -15,11 +15,10 @@
 
     <table class="table  table-sm ">
         <tr th:each="post:${posts}" th:object="${post}">
-            <td scope="row" class="align-middle" th:text="*{id}"></td>
             <td scope="row" class="align-middle" th:text="*{vote}"></td>
             <td scope="row" class="align-middle">
                 <form th:action="'/votingup/?postId=' + *{getId()}" method="post">
-                    <button  type="submit" class="btn btn-link" th:value="*{getId()}"><u>+</u></button>
+                    <button type="submit" class="btn btn-link" th:value="*{getId()}"><u>+</u></button>
                 </form>
             </td>
             <td scope="row" class="align-middle">
@@ -27,9 +26,10 @@
                     <button type="submit" class="btn btn-link" th:value="*{getId()}"><u>-</u></button>
                 </form>
             </td>
-            <td scope="row" >
-                <a th:href="@{${post.getUrl()}}" th:text="*{title}" th:value="*{getUrl()}"><u></u></a>
+            <td scope="row" class="align-middle"><u>
+                <a th:href="@{${post.getUrl()}}" th:text="*{title}" th:value="*{getUrl()}"></a></u>
             </td>
+            <td scope="row" class="align-middle" th:text="*{date}"></td>
         </tr>
     </table>
 

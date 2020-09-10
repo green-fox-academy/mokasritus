@@ -18,32 +18,32 @@ public class RedditController {
     this.postService = postService;
   }
 
-  @GetMapping(value="/")
-  public String renderMainPage(Model model){
+  @GetMapping(value = "/")
+  public String renderMainPage(Model model) {
     model.addAttribute("posts", postService.findAllPosts());
-        return "mainpage";
+    return "mainpage";
   }
 
-  @GetMapping(value="/submit")
-  public String renderSubmitPage(Model model){
+  @GetMapping(value = "/submit")
+  public String renderSubmitPage(Model model) {
     model.addAttribute("newPost", new Post());
     return "submit";
   }
 
-  @PostMapping(value="/submit")
-  public String saveNewPost(Post newPost){
+  @PostMapping(value = "/submit")
+  public String saveNewPost(Post newPost) {
     postService.saveNewPost(newPost);
     return "redirect:/";
   }
 
-  @PostMapping(value="/votingup")
-  public String increaseVoteWithOne(@RequestParam int postId){
+  @PostMapping(value = "/votingup")
+  public String increaseVoteWithOne(@RequestParam int postId) {
     postService.increaseVoteWithOneById(postId);
     return "redirect:/";
   }
 
-  @PostMapping(value="/votingdown")
-  public String decreaseVoteWithOne(@RequestParam int postId){
+  @PostMapping(value = "/votingdown")
+  public String decreaseVoteWithOne(@RequestParam int postId) {
     postService.decreaseVoteWithOneById(postId);
     return "redirect:/";
   }
