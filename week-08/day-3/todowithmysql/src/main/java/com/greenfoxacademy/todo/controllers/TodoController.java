@@ -39,6 +39,7 @@ public class TodoController {
   @PostMapping(value="/search")
   public String searchTodo(String text, Model model){
         model.addAttribute("foundTodo", todoService.searchTodo(text));
+        return "redirect:/list";
   }
 
   @PostMapping(value="/add")

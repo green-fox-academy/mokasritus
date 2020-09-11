@@ -52,4 +52,8 @@ public class TodoService {
     return list.stream().filter(todo -> todo.isComplete() != isActive)
         .collect(Collectors.toList());
   }
+
+  public List<Todo> searchTodo(String text) {
+    repository.findAll().stream()
+  }
 }

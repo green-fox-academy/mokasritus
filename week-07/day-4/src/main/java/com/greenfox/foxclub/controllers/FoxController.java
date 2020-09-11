@@ -35,6 +35,6 @@ public class FoxController {
     //nem kell Model model mivel nem adunk át infót egy POST-os metód alatt a html-nek
     Fox myFox = foxService.searchFoxWithName(name);
     foxService.chooseFoodAndDrink(name, food, drink);
-    return "redirect:/?name=" + name;
+    return "redirect:/?name=" + foxService.searchFoxWithName(name).getName();
   }
 }
