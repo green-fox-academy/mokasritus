@@ -1,6 +1,5 @@
 package com.greenfoxacademy.todo.models;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,9 +28,10 @@ public class Todo {
   }
 
   public Todo(String title) {
+    this(); //üres constructort hívja meg
     this.title = title;
-    isComplete = false;
-    isUrgent = false;
+    //isComplete = false;
+    //isUrgent = false;
   }
 
   public void setId(long id) {

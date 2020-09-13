@@ -21,20 +21,20 @@ public class PostService {
   }
 
   public void saveNewPost(Post newPost) {
-  postRepository.save(newPost);
+    postRepository.save(newPost);
   }
 
   public void increaseVoteWithOneById(int postId) {
     Post foundById = getPostById(postId);
-    foundById.setVote(foundById.getVote()+1);
+    foundById.setVote(foundById.getVote() + 1);
     postRepository.save(foundById);
   }
 
   public void decreaseVoteWithOneById(int postId) {
     Post foundById = getPostById(postId);
-    if(foundById.getVote()>0){
-    foundById.setVote((foundById.getVote()-1));}
-    else {
+    if (foundById.getVote() > 0) {
+      foundById.setVote((foundById.getVote() - 1));
+    } else {
       foundById.setVote(0);
     }
     postRepository.save(foundById);

@@ -12,9 +12,9 @@
         <h1>Todos for today:</h1>
         <a href="/add">Add new todo</a>
         <div id="searchbar">
-            <form action="/search" method="post">
+            <form action="/search" method="get">
                 <label for="search">Search for:</label>
-                <input type="search" id="search" name="searchTerm" required>
+                <input type="search" id="search" name="text" required>
                 <button type="submit">Search</button>
             </form>
 
@@ -37,10 +37,10 @@
                 <td scope="row" th:text="*{isComplete()}"></td>
                 <td scope="row" th:text="*{isUrgent()}"></td>
                 <td>
-                    <form th:action="'/complete/?productId=' + *{getId()}" method="post">
+                    <form th:action="'/complete/?todoId=' + *{getId()}" method="post">
                         <button type="submit" th:value="*{getId()}">Complete</button>
                     </form>
-                    <form th:action="'/remove/?productId=' + *{getId()}" method="post">
+                    <form th:action="'/remove/?todoId=' + *{getId()}" method="post">
                         <button type="submit" th:value="*{getId()}">Delete</button>
                     </form>
                 </td>

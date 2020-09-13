@@ -14,7 +14,9 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class BasicWebshopController {
@@ -62,6 +64,18 @@ public class BasicWebshopController {
   public String getMostExpensive(Model model){
     model.addAttribute("mostExpensive", searchMostExpensiveItem() );
     return "averagestock";
+  }
+
+  @GetMapping("/search")
+  public String searchItem(Model model, @RequestParam String search){
+
+    model.addAttribute("shopItems", searchedItemsContainsSearch(search));
+        return "index";
+  }
+
+  private List<ShopItem> searchedItemsContainsSearch(String search) {
+    return shopItems.stream().filter(shopItem -> shopItem.getName().toLowerCase().contains(search.toLowerCase())).collect(
+        Collectors.toList());
   }
 
   private ShopItem searchMostExpensiveItem() {

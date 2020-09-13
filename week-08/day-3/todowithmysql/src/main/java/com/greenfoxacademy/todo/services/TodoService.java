@@ -31,29 +31,31 @@ public class TodoService {
     repository.save(newTodo);
   }
 
-  public void removeTodoById(long productId) {
-    repository.deleteById(productId);
+  public void removeTodoById(long todoId) {
+    repository.deleteById(todoId);
   }
 
-  public void completeTodo(long productId) {
-    Todo modifiedTodo = getProductById(productId);
+  public void completeTodo(long todoId) {
+    Todo modifiedTodo = getProductById(todoId);
     modifiedTodo.setIsComplete(true);
     repository.save(modifiedTodo);
     //adatbázis használatánál amikor egy Object fieldjén változtatunk mindig kell egy mentés az adott metódba
   }
 
-  public Todo getProductById(long productId) {
-    return repository.findById(productId).orElseThrow(NoSuchElementException::new);
+  public Todo getProductById(long todoId) {
+    return repository.findById(todoId).orElseThrow(NoSuchElementException::new);
   }
 
-  public List<Todo> getAllActive(boolean isActive) {
-    List<Todo> list = new ArrayList<>();
-    repository.findAll().forEach(list::add);
+  public List<Todo> getAllActive(boolean isActive) { //repo-ból úgy kérjem ki
+    List<Todo> list = new ArrayList<>(repository.findAll());
     return list.stream().filter(todo -> todo.isComplete() != isActive)
         .collect(Collectors.toList());
   }
 
   public List<Todo> searchTodo(String text) {
-    repository.findAll().stream()
+   // return repository.findTodosByTitleContaining(text);
+
+    return repository.findAll().stream().filter(todo -> (todo.getTitle().toLowerCase()).contains((text).toLowerCase())).collect(
+      Collectors.toList());
   }
 }
