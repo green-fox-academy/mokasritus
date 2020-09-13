@@ -68,13 +68,12 @@ public class BasicWebshopController {
 
   @GetMapping("/search")
   public String searchItem(Model model, @RequestParam String search){
-
     model.addAttribute("shopItems", searchedItemsContainsSearch(search));
         return "index";
   }
 
   private List<ShopItem> searchedItemsContainsSearch(String search) {
-    return shopItems.stream().filter(shopItem -> shopItem.getName().toLowerCase().contains(search.toLowerCase())).collect(
+    return shopItems.stream().filter(shopItem -> shopItem.getName().toLowerCase().contains(search.toLowerCase()) || shopItem.getDescription().toLowerCase().contains(search.toLowerCase())).collect(
         Collectors.toList());
   }
 

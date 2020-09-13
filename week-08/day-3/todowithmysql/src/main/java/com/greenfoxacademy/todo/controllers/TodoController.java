@@ -26,8 +26,7 @@ public class TodoController {
   }
 
   @GetMapping(value = {"/", "list"})
-  public String listBasedOnBolean(Model model, @RequestParam(required = false) boolean isActive) {
-    //showFilteredList
+  public String showFileteredList(Model model, @RequestParam(required = false) boolean isActive) {
     model.addAttribute("todos", todoService.getAllActive(isActive));
     return "list";
   }
@@ -39,19 +38,19 @@ public class TodoController {
   }
 
   @GetMapping(value = "/search")//GET, mert csak lekérdezünk
-  public String searchTodo(@RequestParam String text, Model model) {
-    model.addAttribute("todos", todoService.searchTodo(text));
-    return "redirect:/list";
+  public String searchTodo(@RequestParam String searchText, Model model) {
+    model.addAttribute("todos", todoService.searchTodo(searchText));
+    return "list";
   }
 
   @PostMapping(value = "/add")
   public String addNewTodo(@ModelAttribute Todo newTodo) {
     todoService.addTodo(newTodo);
-    return "redirect:/todo";
+    return "todo";
   }
 
 
-  @PostMapping(value = "/complete")//todoID!!!
+  @PostMapping(value = "/complete")
   public String completeTodo(@RequestParam long todoId) {
     todoService.completeTodo(todoId);
     return "redirect:/list";

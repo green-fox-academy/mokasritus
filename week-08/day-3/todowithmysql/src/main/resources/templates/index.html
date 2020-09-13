@@ -12,9 +12,9 @@
         <h1>Todos for today:</h1>
         <a href="/add">Add new todo</a>
         <div id="searchbar">
-            <form action="/search" method="get">
-                <label for="search">Search for:</label>
-                <input type="search" id="search" name="text" required>
+            <form action="/search" th:method="get">
+                <label for="searchText">Search for:</label>
+                <input type="search" id="searchText" name="searchText">
                 <button type="submit">Search</button>
             </form>
 
