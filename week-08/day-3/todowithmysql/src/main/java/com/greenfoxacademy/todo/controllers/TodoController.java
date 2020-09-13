@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -41,6 +42,12 @@ public class TodoController {
   public String searchTodo(@RequestParam String searchText, Model model) {
     model.addAttribute("todos", todoService.searchTodo(searchText));
     return "list";
+  }
+
+  @GetMapping(value="/edit{todoId}")
+  public String renderEditPage(@PathVariable long todoId, Model model){
+    model.addAttribute("todo", todoService.getProductById(todoId));
+    return "edit";
   }
 
   @PostMapping(value = "/add")

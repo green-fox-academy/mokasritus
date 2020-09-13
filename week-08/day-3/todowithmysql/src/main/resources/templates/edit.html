@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Edit todo</title>
+</head>
+<body>
+<h1>Edit todo</h1>
+<form th:object="${todo}" th:action="@{/edit{id} (id=*{getId()})}" th:method="post">
+    <label for="modificatedTitle" th:style="'font-size: 25px;'">Todo title</label>
+    <input type="text" id="modificatedTitle" th:field="*{title}">
+
+    <label for="urgent" th:style="'font-size: 25px;'">Urgent</label>
+    <input type="checkbox" id="urgent" th:field="*{isUrgent()}">
+
+    <label for="done" th:style="'font-size: 25px;'">Done</label>
+    <input type="checkbox" id="done" th:field="*{isComplete()}">
+
+    <input type="submit" value="Add">
+    <a href="/todo"></a>
+</form>
+</body>
+</html>

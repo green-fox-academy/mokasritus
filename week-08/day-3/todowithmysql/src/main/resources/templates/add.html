@@ -10,7 +10,8 @@
     <label for="newtodo" th:style="'font-size: 25px;'">New todo</label>
     <input placeholder="Remember everything" type="text"
            id="newtodo" th:field="*{title}">
-    <input type="submit" value="Add">
+    <input type="submit"  value="Submit">
+    <a href="/todo" th:method="get">cancel</a>
 </form>
 </body>
 </html>

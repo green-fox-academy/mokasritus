@@ -53,11 +53,11 @@ public class TodoService {
   }
 
   public List<Todo> searchTodo(String text) {
-    // return repository.findTodosByTitleContaining(text);
-    List<Todo> list = new ArrayList<>(repository.findAll());
+    return repository.findTodosByTitleContaining(text);
+   /* List<Todo> list = new ArrayList<>(repository.findAll());
 
     return list.stream()
         .filter(todo -> (todo.getTitle().toLowerCase()).contains(text.toLowerCase())).collect(
-            Collectors.toList());
+            Collectors.toList());*/
   }
 }

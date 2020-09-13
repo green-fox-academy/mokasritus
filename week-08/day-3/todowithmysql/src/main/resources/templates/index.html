@@ -38,10 +38,17 @@
                 <td scope="row" th:text="*{isUrgent()}"></td>
                 <td>
                     <form th:action="'/complete/?todoId=' + *{getId()}" method="post">
-                        <button type="submit" th:value="*{getId()}">Complete</button>
+                        <button type="submit" class="btn btn-link" th:value="*{getId()}">Complete</button>
                     </form>
+                </td>
+                <td>
                     <form th:action="'/remove/?todoId=' + *{getId()}" method="post">
-                        <button type="submit" th:value="*{getId()}">Delete</button>
+                        <button type="submit" class="btn btn-link" th:value="*{getId()}">Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/edit{id} (id=*{getId()})}" th:method="get">
+                        <button type="submit" class="btn btn-link" th:value="*{getId()}">Edit</button>
                     </form>
                 </td>
             </tr>
