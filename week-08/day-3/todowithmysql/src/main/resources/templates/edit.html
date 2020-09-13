@@ -8,18 +8,18 @@
 </head>
 <body>
 <h1>Edit todo</h1>
-<form th:object="${todo}" th:action="@{/edit{id} (id=*{getId()})}" th:method="post">
+<form th:object="${todo}" th:action="|/*{getId()}/edit|" th:method="post">
     <label for="modificatedTitle" th:style="'font-size: 25px;'">Todo title</label>
     <input type="text" id="modificatedTitle" th:field="*{title}">
-
-    <label for="urgent" th:style="'font-size: 25px;'">Urgent</label>
-    <input type="checkbox" id="urgent" th:field="*{isUrgent()}">
-
-    <label for="done" th:style="'font-size: 25px;'">Done</label>
-    <input type="checkbox" id="done" th:field="*{isComplete()}">
-
-    <input type="submit" value="Add">
-    <a href="/todo"></a>
+    <br>
+    <label for="isUrgent" th:style="'font-size: 25px;'">Urgent</label>
+    <input type="checkbox" id="isUrgent" name="isUrgent" th:checked="*{isUrgent()}">
+    <br>
+    <label for="isComplete" th:style="'font-size: 25px;'">Done</label>
+    <input type="checkbox" id="isComplete" name="isComplete" th:checked="*{isComplete()}">
+    <br>
+    <input type="submit" value="Submit">
+    <a href="/todo">Cancel</a>
 </form>
 </body>
 </html>

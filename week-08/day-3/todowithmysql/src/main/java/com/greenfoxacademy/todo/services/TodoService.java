@@ -36,13 +36,13 @@ public class TodoService {
   }
 
   public void completeTodo(long todoId) {
-    Todo modifiedTodo = getProductById(todoId);
+    Todo modifiedTodo = getTodoById(todoId);
     modifiedTodo.setIsComplete(true);
     repository.save(modifiedTodo);
     //adatbázis használatánál amikor egy Object fieldjén változtatunk mindig kell egy mentés az adott metódba
   }
 
-  public Todo getProductById(long todoId) {
+  public Todo getTodoById(long todoId) {
     return repository.findById(todoId).orElseThrow(NoSuchElementException::new);
   }
 
@@ -55,9 +55,16 @@ public class TodoService {
   public List<Todo> searchTodo(String text) {
     return repository.findTodosByTitleContaining(text);
    /* List<Todo> list = new ArrayList<>(repository.findAll());
-
     return list.stream()
         .filter(todo -> (todo.getTitle().toLowerCase()).contains(text.toLowerCase())).collect(
             Collectors.toList());*/
+  }
+
+  public void editTodo(long id, String title, boolean isUrgent, Boolean isComplete) {
+    Todo selectedTodo = repository.findTodoByIdEquals(id);
+    selectedTodo.setTitle(title);
+    selectedTodo.setIsComplete(isComplete);
+    selectedTodo.setUrgent(isUrgent);
+    repository.save(selectedTodo);
   }
 }

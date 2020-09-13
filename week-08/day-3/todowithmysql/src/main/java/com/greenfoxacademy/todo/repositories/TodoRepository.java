@@ -1,21 +1,24 @@
 package com.greenfoxacademy.todo.repositories;
 
 import com.greenfoxacademy.todo.models.Todo;
-import java.util.Collection;
 import java.util.List;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface TodoRepository  extends CrudRepository<Todo, Long> {
+public interface TodoRepository extends CrudRepository<Todo, Long> {
 
   List<Todo> findAll();
 
-  @Query("SELECT todo From Todo todo WHERE todo.title like %:text%")
+  Todo findTodoByIdEquals(long id);
+
+  @Query("SELECT todo From Todo todo WHERE todo.title LIKE %:text%")
   List<Todo> findTodosByTitleContaining(String text);
+
+  @Query("SELECT todo From Todo todo WHERE todo.id= :id")
+  Todo findTodoById(long id);
 
  /* private List<Todo> todos;
 

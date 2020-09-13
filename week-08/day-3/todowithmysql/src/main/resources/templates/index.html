@@ -47,7 +47,7 @@
                     </form>
                 </td>
                 <td>
-                    <form th:action="@{/edit{id} (id=*{getId()})}" th:method="get">
+                    <form th:action="@{/{id}/edit (id=*{getId()})}" th:method="get">
                         <button type="submit" class="btn btn-link" th:value="*{getId()}">Edit</button>
                     </form>
                 </td>

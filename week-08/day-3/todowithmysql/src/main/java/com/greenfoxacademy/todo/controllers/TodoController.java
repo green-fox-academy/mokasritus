@@ -44,10 +44,17 @@ public class TodoController {
     return "list";
   }
 
-  @GetMapping(value="/edit{todoId}")
-  public String renderEditPage(@PathVariable long todoId, Model model){
-    model.addAttribute("todo", todoService.getProductById(todoId));
+  @GetMapping(value = "/{id}/edit")
+  public String renderEditPage(@PathVariable("id") long id, Model model) {
+    model.addAttribute("todo", todoService.getTodoById(id));
     return "edit";
+  }
+
+  @PostMapping(value = "/{id}/edit")
+  public String editChoosenTodo(@PathVariable("id") long id, String title, boolean isUrgent,
+                                boolean isComplete) {
+    todoService.editTodo(id, title, isUrgent, isComplete);
+    return "redirect:/todo";
   }
 
   @PostMapping(value = "/add")
