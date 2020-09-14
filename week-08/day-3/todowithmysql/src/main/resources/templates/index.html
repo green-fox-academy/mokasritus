@@ -10,7 +10,8 @@
 <div>
     <div class="container">
         <h1>Todos for today:</h1>
-        <a href="/add">Add new todo</a>
+        <a href="/add"><u>Add new todo</u></a>
+
         <div id="searchbar">
             <form action="/search" th:method="get">
                 <label for="searchText">Search for:</label>
@@ -26,6 +27,7 @@
                 <th scope="col">ACTION</th>
                 <th scope="col">DONE</th>
                 <th scope="col">URGENT</th>
+                <th scope="col">ASSIGNEE</th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
@@ -33,9 +35,11 @@
                 <td scope="row" th:text="*{getId()}"></td>
                 <td scope="row"
                     th:style="*{isComplete()}==true ? 'text-decoration: line-through;' : 'text-decoration: none;'"
-                    th:text="*{getTitle()}"></td>
+                    th:text="*{getTitle()}">
+                </td>
                 <td scope="row" th:text="*{isComplete()}"></td>
                 <td scope="row" th:text="*{isUrgent()}"></td>
+             <!--   <td scope="row" th:object="${todo.assignee}" th:text="*{getName()}"></td> -->
                 <td>
                     <form th:action="'/complete/?todoId=' + *{getId()}" method="post">
                         <button type="submit" class="btn btn-link" th:value="*{getId()}">Complete</button>
@@ -51,8 +55,9 @@
                         <button type="submit" class="btn btn-link" th:value="*{getId()}">Edit</button>
                     </form>
                 </td>
-            </tr>
+                </tr>
         </table>
+        <a href="/assignee"><u>Assignees</u></a>
     </div>
 </div>
 </body>

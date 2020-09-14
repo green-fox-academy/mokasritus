@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,14 +23,18 @@ public class Todo {
 
   //private static int idCounter=0;
 
+  @ManyToOne
+  private Assignee assignee;
+
   public Todo() {
     isComplete = false;
     isUrgent = false;
   }
 
-  public Todo(String title) {
+  public Todo(String title, Assignee assignee) {
     this(); //üres constructort hívja meg
     this.title = title;
+    this.assignee=assignee;
     //isComplete = false;
     //isUrgent = false;
   }
@@ -50,6 +55,10 @@ public class Todo {
     return id;
   }
 
+  public Assignee getAssignee() {
+    return assignee;
+  }
+
   public void setTitle(String title) {
     this.title = title;
   }
@@ -64,5 +73,9 @@ public class Todo {
 
   public void setUrgent(boolean urgent) {
     isUrgent = urgent;
+  }
+
+  public void setAssignee(Assignee assignee) {
+    this.assignee = assignee;
   }
 }

@@ -1,6 +1,7 @@
 package com.greenfoxacademy.todo.controllers;
 
 import com.greenfoxacademy.todo.models.Todo;
+import com.greenfoxacademy.todo.services.AssigneeService;
 import com.greenfoxacademy.todo.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class TodoController {
   private TodoService todoService;
+  private AssigneeService assigneeService;
 
   @Autowired
-  public TodoController(TodoService todoService) {
+  public TodoController(TodoService todoService, AssigneeService assigneeService) {
     this.todoService = todoService;
+    this.assigneeService=assigneeService;
   }
 
   @GetMapping(value = {"/todo"})
@@ -34,6 +37,7 @@ public class TodoController {
 
   @GetMapping(value = "/add")
   public String renderAddPage(Model model) {
+    model.addAttribute("assignees", assigneeService.getAllAssignee());
     model.addAttribute("newtodo", new Todo());
     return "add";
   }
@@ -47,20 +51,21 @@ public class TodoController {
   @GetMapping(value = "/{id}/edit")
   public String renderEditPage(@PathVariable("id") long id, Model model) {
     model.addAttribute("todo", todoService.getTodoById(id));
+    model.addAttribute("assignees", assigneeService.getAllAssignee());
     return "edit";
   }
 
   @PostMapping(value = "/{id}/edit")
   public String editChoosenTodo(@PathVariable("id") long id, String title, boolean isUrgent,
-                                boolean isComplete) {
-    todoService.editTodo(id, title, isUrgent, isComplete);
+                                boolean isComplete, Long assigneeId) {
+    todoService.editTodo(id, title, isUrgent, isComplete, assigneeService.getAssigneById(assigneeId));
     return "redirect:/todo";
   }
 
   @PostMapping(value = "/add")
   public String addNewTodo(@ModelAttribute Todo newTodo) {
     todoService.addTodo(newTodo);
-    return "todo";
+    return "redirect:/todo";
   }
 
 

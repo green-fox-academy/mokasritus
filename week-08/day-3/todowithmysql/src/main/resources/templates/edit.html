@@ -18,8 +18,15 @@
     <label for="isComplete" th:style="'font-size: 25px;'">Done</label>
     <input type="checkbox" id="isComplete" name="isComplete" th:checked="*{isComplete()}">
     <br>
+    <label for="assignee">Assignee</label>
+    <select id="assignee" name="assignee">
+        <option value="" selected disabled></option>
+        <option th:each="assignee : ${assignees}"  th:text="${assignee.getName()}"
+                th:value="${assignee.getId()}"></option>
+    </select>
+    <br>
     <input type="submit" value="Submit">
-    <a href="/todo">Cancel</a>
+    <a href="/todo"><u>Cancel</u></a>
 </form>
 </body>
 </html>

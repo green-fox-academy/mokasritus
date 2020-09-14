@@ -5,12 +5,19 @@
     <title>Add new todo</title>
 </head>
 <body>
-<h1>Add now todo</h1>
+<h1>Add new todo</h1>
 <form th:object="${newtodo}" action="/add" method="post">
     <label for="newtodo" th:style="'font-size: 25px;'">New todo</label>
     <input placeholder="Remember everything" type="text"
            id="newtodo" th:field="*{title}">
     <input type="submit"  value="Submit">
+    <label for="assignee">Assignee</label>
+    <br>
+    <select id="assignee" name="assignee">
+        <option value="" selected disabled></option>
+        <option th:each="assignee : ${assignees}"  th:text="${assignee.getName()}"
+                th:value="${assignee.getId()}"></option>
+    </select>
     <a href="/todo" th:method="get">cancel</a>
 </form>
 </body>

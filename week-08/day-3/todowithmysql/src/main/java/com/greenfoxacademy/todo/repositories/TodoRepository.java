@@ -17,9 +17,6 @@ public interface TodoRepository extends CrudRepository<Todo, Long> {
   @Query("SELECT todo From Todo todo WHERE todo.title LIKE %:text%")
   List<Todo> findTodosByTitleContaining(String text);
 
-  @Query("SELECT todo From Todo todo WHERE todo.id= :id")
-  Todo findTodoById(long id);
-
  /* private List<Todo> todos;
 
   public TodoRepository() {
