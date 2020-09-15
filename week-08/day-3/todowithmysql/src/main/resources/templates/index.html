@@ -39,7 +39,7 @@
                 </td>
                 <td scope="row" th:text="*{isComplete()}"></td>
                 <td scope="row" th:text="*{isUrgent()}"></td>
-             <!--   <td scope="row" th:object="${todo.assignee}" th:text="*{getName()}"></td> -->
+                <td scope="row" th:text="*{getAssignee()}"></td>
                 <td>
                     <form th:action="'/complete/?todoId=' + *{getId()}" method="post">
                         <button type="submit" class="btn btn-link" th:value="*{getId()}">Complete</button>
