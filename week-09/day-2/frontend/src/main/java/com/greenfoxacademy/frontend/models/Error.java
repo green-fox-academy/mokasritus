@@ -1,10 +1,10 @@
 package com.greenfoxacademy.frontend.models;
 
-public class InputError {
+public class Error {
   private String error;
 
-  public InputError() {
-    error="Please provide an input!";
+  public Error(String message) {
+    error=message;
   }
 
   public String getError() {

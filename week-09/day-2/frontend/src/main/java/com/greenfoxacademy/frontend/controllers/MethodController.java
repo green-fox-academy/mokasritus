@@ -2,9 +2,9 @@ package com.greenfoxacademy.frontend.controllers;
 
 
 import com.greenfoxacademy.frontend.models.DoubledValue;
-import com.greenfoxacademy.frontend.models.InputError;
+import com.greenfoxacademy.frontend.models.Error;
+import com.greenfoxacademy.frontend.models.GreatingSomeone;
 import com.greenfoxacademy.frontend.services.MethodService;
-import jdk.nashorn.internal.runtime.regexp.joni.exception.ErrorMessages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +22,27 @@ public class MethodController {
   }
 
   @GetMapping(value = "/doubling")
-  public ResponseEntity doubleGivenNumber(@RequestParam(required=false) Integer input) {
-    if (input==null) {
-      return ResponseEntity.status(HttpStatus.OK).body(new InputError());
-    }else {
+  public ResponseEntity doubleGivenNumber(@RequestParam(required = false) Integer input) {
+    if (input == null) {
+      return ResponseEntity.status(HttpStatus.OK).body(new Error("Please provide an input!"));
+    } else {
       return ResponseEntity.status(HttpStatus.OK).body(new DoubledValue(input));
     }
   }
-  //ResponseEntity<DoubledValue>
+
+  @GetMapping(value = "/greeter")
+  public ResponseEntity greetSomeone(@RequestParam(required=false) String name, @RequestParam(required = false) String title) {
+    if (title == null && name == null) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+          .body(new Error("Please provide a name and a title!"));
+    } else if (name == null) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Please provide a name!"));
+    } else if (title == null) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Please provide a title!"));
+    } else {
+      return ResponseEntity.status(HttpStatus.OK).body(new GreatingSomeone(name, title));
+    }
+  }
 }
+
+
