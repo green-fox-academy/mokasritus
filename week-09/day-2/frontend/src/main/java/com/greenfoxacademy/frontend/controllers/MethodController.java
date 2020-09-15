@@ -1,6 +1,7 @@
 package com.greenfoxacademy.frontend.controllers;
 
 
+import com.greenfoxacademy.frontend.models.AppandA;
 import com.greenfoxacademy.frontend.models.DoubledValue;
 import com.greenfoxacademy.frontend.models.Error;
 import com.greenfoxacademy.frontend.models.GreatingSomeone;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,6 +45,16 @@ public class MethodController {
       return ResponseEntity.status(HttpStatus.OK).body(new GreatingSomeone(name, title));
     }
   }
+
+  @GetMapping(value="/appenda/{appendable}")
+  public ResponseEntity appandA(@PathVariable String appendable){
+    if (appendable==null){
+      return new ResponseEntity(HttpStatus.NOT_FOUND);
+    } else {
+      return ResponseEntity.status(HttpStatus.OK).body(new AppandA(appendable));
+    }
+  }
+
 }
 
 
