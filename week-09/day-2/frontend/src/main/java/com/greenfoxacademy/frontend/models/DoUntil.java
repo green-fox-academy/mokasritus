@@ -1,14 +1,10 @@
 package com.greenfoxacademy.frontend.models;
 
-public class Sum {
+public class DoUntil {
   private int result;
 
-
-  public Sum(int until) {
-    result = 0;
-    for (int i = 1; i <= until; i++) {
-      result += i;
-    }
+  public DoUntil(int result) {
+    this.result = result;
   }
 
   public int getResult() {

@@ -4,10 +4,9 @@ package com.greenfoxacademy.frontend.controllers;
 import com.greenfoxacademy.frontend.models.AppandA;
 import com.greenfoxacademy.frontend.models.DoubledValue;
 import com.greenfoxacademy.frontend.models.Error;
-import com.greenfoxacademy.frontend.models.Factor;
 import com.greenfoxacademy.frontend.models.GreatingSomeone;
 import com.greenfoxacademy.frontend.models.NumberForUntil;
-import com.greenfoxacademy.frontend.models.Sum;
+import com.greenfoxacademy.frontend.models.ObjectFromJson;
 import com.greenfoxacademy.frontend.services.MethodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -69,12 +68,17 @@ public class MethodController {
     if (numberForUntil == null) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST)
           .body(new Error("Please provide a number!"));
-    } else if (action.equals("sum")) {
+    } else {
       return ResponseEntity.status(HttpStatus.OK)
-          .body(new Sum(numberForUntil.getUntil()));
-    } else if(action.equals("factor")) {
-      return ResponseEntity.status(HttpStatus.OK)
-          .body(new Factor(numberForUntil.getUntil()));
+          .body(methodService.getResultValue(action, numberForUntil));
+    }
+  }
+
+  @PostMapping(value = "/arrays")
+  public ResponseEntity arrayHandler(@RequestBody(required = false) ObjectFromJson objectFromJson) {
+    if (objectFromJson.getWhat() == null || objectFromJson.getNumbers() == null) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+          .body(new Error("Please provide what to do with the numbers!"));
     } return new ResponseEntity(HttpStatus.NOT_FOUND);
   }
 }

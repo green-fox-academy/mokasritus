@@ -15,7 +15,4 @@ public class NumberForUntil {
     return until;
   }
 
-  public void setUntil(int until) {
-    this.until = until;
-  }
 }
