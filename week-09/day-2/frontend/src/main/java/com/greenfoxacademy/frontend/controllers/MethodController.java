@@ -76,10 +76,15 @@ public class MethodController {
 
   @PostMapping(value = "/arrays")
   public ResponseEntity arrayHandler(@RequestBody(required = false) ObjectFromJson objectFromJson) {
-    if (objectFromJson.getWhat() == null || objectFromJson.getNumbers() == null) {
+    if (objectFromJson.getWhat() == null) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST)
           .body(new Error("Please provide what to do with the numbers!"));
-    } return new ResponseEntity(HttpStatus.NOT_FOUND);
+    } else if (objectFromJson.getNumbers() == null) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+          .body(new Error("Please provide the numbers!"));
+    } else {
+      return ResponseEntity.status(HttpStatus.OK).body(methodService.showResult(objectFromJson));
+    }
   }
 }
 
