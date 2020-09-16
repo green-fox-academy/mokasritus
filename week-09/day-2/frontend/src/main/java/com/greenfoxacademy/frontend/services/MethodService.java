@@ -1,12 +1,13 @@
 package com.greenfoxacademy.frontend.services;
 
-import com.greenfoxacademy.frontend.models.ArrayHandlerResultIsArray;
-import com.greenfoxacademy.frontend.models.ArrayHandlerResultIsOneNumber;
-import com.greenfoxacademy.frontend.models.DoUntil;
-import com.greenfoxacademy.frontend.models.NumberForUntil;
-import com.greenfoxacademy.frontend.models.ObjectFromJson;
-import java.util.ArrayList;
-import java.util.List;
+import com.greenfoxacademy.frontend.models.Log;
+import com.greenfoxacademy.frontend.models.arrayhandler.ArrayHandlerResultIsArray;
+import com.greenfoxacademy.frontend.models.arrayhandler.ArrayHandlerResultIsOneNumber;
+import com.greenfoxacademy.frontend.models.arrayhandler.ObjectFromJson;
+import com.greenfoxacademy.frontend.models.checkonwebsite.DoUntil;
+import com.greenfoxacademy.frontend.models.checkonwebsite.NumberForUntil;
+import com.greenfoxacademy.frontend.repository.LogRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,12 +18,10 @@ public class MethodService {
       return new ArrayHandlerResultIsOneNumber(sumArray(objectFromJson.getNumbers()));
     } else if (objectFromJson.getWhat().equals("multiply")) {
       return new ArrayHandlerResultIsOneNumber(multiplyArray(objectFromJson.getNumbers()));
-    }else {
+    } else {
       return new ArrayHandlerResultIsArray(doubleNumbers(objectFromJson.getNumbers()));
     }
   }
-
-
 
   public DoUntil getResultValue(String action, NumberForUntil numberForUntil) {
     if (action.equals("sum")) {
@@ -59,7 +58,7 @@ public class MethodService {
 
   private int sumArray(int[] numbers) {
     int result = 0;
-    for (int i = 0; i <= numbers.length-1; i++) {
+    for (int i = 0; i <= numbers.length - 1; i++) {
       result = result + numbers[i];
     }
     return result;
@@ -67,9 +66,9 @@ public class MethodService {
 
   private int[] doubleNumbers(int[] numbers) {
     int[] result = new int[numbers.length];
-    for (int i = 0; i <= numbers.length-1; i++) {
-      result[i]=numbers[i] * 2;
-    }return result;
+    for (int i = 0; i <= numbers.length - 1; i++) {
+      result[i] = numbers[i] * 2;
+    }
+    return result;
   }
-
 }

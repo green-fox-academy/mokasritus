@@ -1,4 +1,4 @@
-package com.greenfoxacademy.frontend.models;
+package com.greenfoxacademy.frontend.models.arrayhandler;
 
 
 public class ObjectFromJson {

@@ -1,13 +1,17 @@
 package com.greenfoxacademy.frontend.controllers;
 
 
-import com.greenfoxacademy.frontend.models.AppandA;
-import com.greenfoxacademy.frontend.models.DoubledValue;
+import com.greenfoxacademy.frontend.models.Entry;
 import com.greenfoxacademy.frontend.models.Error;
-import com.greenfoxacademy.frontend.models.GreatingSomeone;
-import com.greenfoxacademy.frontend.models.NumberForUntil;
-import com.greenfoxacademy.frontend.models.ObjectFromJson;
+import com.greenfoxacademy.frontend.models.Log;
+import com.greenfoxacademy.frontend.models.arrayhandler.ObjectFromJson;
+import com.greenfoxacademy.frontend.models.checkonwebsite.AppandA;
+import com.greenfoxacademy.frontend.models.checkonwebsite.DoubledValue;
+import com.greenfoxacademy.frontend.models.checkonwebsite.GreatingSomeone;
+import com.greenfoxacademy.frontend.models.checkonwebsite.NumberForUntil;
+import com.greenfoxacademy.frontend.services.LogService;
 import com.greenfoxacademy.frontend.services.MethodService;
+import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,14 +25,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MethodController {
   private MethodService methodService;
+  private LogService logService;
 
   @Autowired
-  public MethodController(MethodService methodService) {
+  public MethodController(MethodService methodService, LogService logService) {
     this.methodService = methodService;
+    this.logService = logService;
   }
 
   @GetMapping(value = "/doubling")
   public ResponseEntity doubleGivenNumber(@RequestParam(required = false) Integer input) {
+    logService.save(new Log("/doubling", "input=" + input.toString()));
     if (input == null) {
       return ResponseEntity.status(HttpStatus.OK).body(new Error("Please provide an input!"));
     } else {
@@ -39,6 +46,7 @@ public class MethodController {
   @GetMapping(value = "/greeter")
   public ResponseEntity greetSomeone(@RequestParam(required = false) String name,
                                      @RequestParam(required = false) String title) {
+    logService.save(new Log("/greeter", "input=" + name + ", " + title));
     if (title == null && name == null) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST)
           .body(new Error("Please provide a name and a title!"));
@@ -55,6 +63,7 @@ public class MethodController {
 
   @GetMapping(value = "/appenda/{appendable}")
   public ResponseEntity appandA(@PathVariable String appendable) {
+    logService.save(new Log("/appenda", "input=" + appendable));
     if (appendable == null) {
       return new ResponseEntity(HttpStatus.NOT_FOUND);
     } else {
@@ -65,6 +74,7 @@ public class MethodController {
   @PostMapping(value = "/dountil/{action}")
   public ResponseEntity doUntil(@PathVariable String action,
                                 @RequestBody(required = false) NumberForUntil numberForUntil) {
+    logService.save(new Log("/dountil", "input=" + numberForUntil.getUntil()));
     if (numberForUntil == null) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST)
           .body(new Error("Please provide a number!"));
@@ -76,6 +86,8 @@ public class MethodController {
 
   @PostMapping(value = "/arrays")
   public ResponseEntity arrayHandler(@RequestBody(required = false) ObjectFromJson objectFromJson) {
+    logService.save(new Log("/arrays", "input=" + objectFromJson.getWhat().toString() + ", " +
+        Arrays.toString(objectFromJson.getNumbers())));
     if (objectFromJson.getWhat() == null) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST)
           .body(new Error("Please provide what to do with the numbers!"));
@@ -85,6 +97,11 @@ public class MethodController {
     } else {
       return ResponseEntity.status(HttpStatus.OK).body(methodService.showResult(objectFromJson));
     }
+  }
+
+  @GetMapping(value = "/log")
+  public ResponseEntity showLogDatas() {
+    return ResponseEntity.status(HttpStatus.OK).body(new Entry(logService.showAllLog()));
   }
 }
 

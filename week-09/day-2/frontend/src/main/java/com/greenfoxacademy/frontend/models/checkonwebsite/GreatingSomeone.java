@@ -1,4 +1,4 @@
-package com.greenfoxacademy.frontend.models;
+package com.greenfoxacademy.frontend.models.checkonwebsite;
 
 public class GreatingSomeone {
   private String name;
