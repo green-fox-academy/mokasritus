@@ -5,12 +5,12 @@ import com.greenfoxacademy.frontend.models.Entry;
 import com.greenfoxacademy.frontend.models.Error;
 import com.greenfoxacademy.frontend.models.Log;
 import com.greenfoxacademy.frontend.models.arrayhandler.ObjectFromJson;
-import com.greenfoxacademy.frontend.models.checkonwebsite.AppandA;
+import com.greenfoxacademy.frontend.models.checkonwebsite.AppendA;
 import com.greenfoxacademy.frontend.models.checkonwebsite.DoubledValue;
 import com.greenfoxacademy.frontend.models.checkonwebsite.GreatingSomeone;
 import com.greenfoxacademy.frontend.models.checkonwebsite.NumberForUntil;
 import com.greenfoxacademy.frontend.services.LogService;
-import com.greenfoxacademy.frontend.services.MethodService;
+import com.greenfoxacademy.frontend.services.MethodServiceImpl;
 import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,12 +24,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MethodController {
-  private MethodService methodService;
+  private MethodServiceImpl methodServiceImpl;
   private LogService logService;
 
   @Autowired
-  public MethodController(MethodService methodService, LogService logService) {
-    this.methodService = methodService;
+  public MethodController(MethodServiceImpl methodServiceImpl, LogService logService) {
+    this.methodServiceImpl = methodServiceImpl;
     this.logService = logService;
   }
 
@@ -67,7 +67,7 @@ public class MethodController {
     if (appendable == null) {
       return new ResponseEntity(HttpStatus.NOT_FOUND);
     } else {
-      return ResponseEntity.status(HttpStatus.OK).body(new AppandA(appendable));
+      return ResponseEntity.status(HttpStatus.OK).body(new AppendA(appendable));
     }
   }
 
@@ -80,7 +80,7 @@ public class MethodController {
           .body(new Error("Please provide a number!"));
     } else {
       return ResponseEntity.status(HttpStatus.OK)
-          .body(methodService.getResultValue(action, numberForUntil));
+          .body(methodServiceImpl.getResultValue(action, numberForUntil));
     }
   }
 
@@ -95,7 +95,7 @@ public class MethodController {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST)
           .body(new Error("Please provide the numbers!"));
     } else {
-      return ResponseEntity.status(HttpStatus.OK).body(methodService.showResult(objectFromJson));
+      return ResponseEntity.status(HttpStatus.OK).body(methodServiceImpl.showResult(objectFromJson));
     }
   }
 

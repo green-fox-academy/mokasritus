@@ -5,6 +5,9 @@ public class GreatingSomeone {
   private String title;
   private String welcome_message;
 
+  public GreatingSomeone() {
+  }
+
   public GreatingSomeone(String name, String title) {
     this.name = name;
     this.title = title;

@@ -1,9 +1,9 @@
 package com.greenfoxacademy.frontend.models.checkonwebsite;
 
-public class AppandA {
+public class AppendA {
   private String appended;
 
-  public AppandA(String appandable) {
+  public AppendA(String appandable) {
     this.appended=appandable.concat("a");
   }
 
