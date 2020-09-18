@@ -4,9 +4,7 @@ public class NumberForUntil {
   private Integer until;
 
   public NumberForUntil() {
-    System.out.println();
   }
-
 
   public NumberForUntil(int number) {
     this.until = number;
