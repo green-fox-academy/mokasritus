@@ -74,11 +74,11 @@ public class MethodController {
   @PostMapping(value = "/dountil/{action}")
   public ResponseEntity doUntil(@PathVariable String action,
                                 @RequestBody(required = false) NumberForUntil numberForUntil) {
-    logService.save(new Log("/dountil", "input=" + numberForUntil.getUntil()));
-    if (numberForUntil == null) {
+    if (numberForUntil==null) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST)
           .body(new Error("Please provide a number!"));
     } else {
+      logService.save(new Log("/dountil", "input=" + numberForUntil.getUntil()));
       return ResponseEntity.status(HttpStatus.OK)
           .body(methodServiceImpl.getResultValue(action, numberForUntil));
     }

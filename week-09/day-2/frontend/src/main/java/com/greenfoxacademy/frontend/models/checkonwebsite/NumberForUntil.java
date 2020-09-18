@@ -1,9 +1,10 @@
 package com.greenfoxacademy.frontend.models.checkonwebsite;
 
 public class NumberForUntil {
-  private int until;
+  private Integer until;
 
   public NumberForUntil() {
+    System.out.println();
   }
 
 
@@ -16,7 +17,7 @@ public class NumberForUntil {
     this.until = until;
   }*/
 
-  public int getUntil() {
+  public Integer getUntil() {
     return until;
   }
 

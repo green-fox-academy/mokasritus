@@ -1,6 +1,6 @@
 package com.greenfoxacademy.frontend.controllers;
 
-import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -15,7 +15,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import static org.hamcrest.Matchers.is;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -30,7 +29,7 @@ class MethodControllerTest {
 
   @Test
   void givenInteger_whenDoubleGivenNumber_thenReturnDoubledValueOfInteger() throws Exception {
-    mockMvc.perform(get("/doubling?input=5"))
+    mockMvc.perform(get("/doubling").param("input", "5"))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.result").value(new DoubledValue(5).getResult()));
   }
@@ -52,14 +51,15 @@ class MethodControllerTest {
   }
 
   @Test
-  void givenOnlyName_whenGreetSomeone_thenReturnStatusBadRequest() throws Exception{
+  void givenOnlyName_whenGreetSomeone_thenReturnStatusBadRequest() throws Exception {
     mockMvc.perform(get("/greeter?name=Rita"))
         .andExpect(status().isBadRequest())
         .andExpect(jsonPath("$.error").value("Please provide a title!"));
   }
 
   @Test
-  void givenOnlyTitle_whenGreetSomeone_thenReturnStatusBadRequestWithErrorMessage() throws Exception{
+  void givenOnlyTitle_whenGreetSomeone_thenReturnStatusBadRequestWithErrorMessage()
+      throws Exception {
     mockMvc.perform(get("/greeter?title=Student"))
         .andExpect(status().isBadRequest())
         .andExpect(jsonPath("$.error").value("Please provide a name!"));
@@ -115,9 +115,8 @@ class MethodControllerTest {
 
   @Test
   void givenActionWithEmptyJsonObject_whenDoUntil_returnStatusBadRequestWithErrorMessage() throws Exception {
-       ObjectMapper objectMapper = new ObjectMapper();
-    String item = objectMapper.writeValueAsString(new NumberForUntil());
-    mockMvc.perform(post("/dountil/sum").content(item).contentType(MediaType.APPLICATION_JSON))
+
+    mockMvc.perform(post("/dountil/sum"))
         .andExpect(status().isBadRequest())
         .andExpect(jsonPath("$.error", is("Please provide a number!")));
   }
