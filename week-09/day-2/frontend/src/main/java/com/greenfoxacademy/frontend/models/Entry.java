@@ -1,14 +1,16 @@
 package com.greenfoxacademy.frontend.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 public class Entry {
   private List<Log> entries;
-  private int entry_count;
+  @JsonProperty("entry_count")
+  private int numberOfCounts;
 
   public Entry(List<Log> entries) {
     this.entries=entries;
-    entry_count=entries.size();
+    numberOfCounts =entries.size();
   }
 
   public List<Log> getEntries() {
@@ -19,11 +21,11 @@ public class Entry {
     this.entries = entries;
   }
 
-  public int getEntry_count() {
-    return entry_count;
+  public int getNumberOfCounts() {
+    return numberOfCounts;
   }
 
-  public void setEntry_count(int entry_count) {
-    this.entry_count = entry_count;
+  public void setNumberOfCounts(int numberOfCounts) {
+    this.numberOfCounts = numberOfCounts;
   }
 }

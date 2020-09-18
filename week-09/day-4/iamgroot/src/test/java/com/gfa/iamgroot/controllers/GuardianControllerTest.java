@@ -46,4 +46,37 @@ class GuardianControllerTest {
         .andExpect(status().isBadRequest())
         .andExpect(jsonPath("$.error", is("I am Groot!")));
   }
-}
+
+  @Test
+  public void givenParameters_whenCalculateSpeed_thenReturnStatusOkAndValues() throws Exception {
+    mockMvc.perform(get("/yondu")
+        .param("distance", "100.0")
+        .param("time", "10.0"))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.distance").value(100.0))
+        .andExpect(jsonPath("$.time").value(10.0))
+        .andExpect(jsonPath("$.speed").value(10.0));
+  }
+
+  @Test
+  public void givenOnlyDistance_whenCalculateSpeed_thenReturnStatusBadRequestAndErrorMessage() throws Exception {
+    mockMvc.perform(get("/yondu")
+        .param("distance", "100.0"))
+        .andExpect(status().isBadRequest())
+        .andExpect(jsonPath("$.error").value("Please provide a time!"));
+  }
+
+  @Test
+  public void givenOnlyTime_whenCalculateSpeed_thenReturnStatusBadRequestAndErrorMessage() throws Exception {
+    mockMvc.perform(get("/yondu")
+        .param("time", "10.0"))
+        .andExpect(status().isBadRequest())
+        .andExpect(jsonPath("$.error").value("Please provide a distance!"));
+  }
+
+  @Test
+  public void withoutGivenParameter_whenCalculateSpeed_thenReturnStatusBadRequestAndErrorMessage() throws Exception {
+    mockMvc.perform(get("/yondu"))
+        .andExpect(status().isBadRequest())
+        .andExpect(jsonPath("$.error").value("Please provide a distance and a time!"));
+  }}
