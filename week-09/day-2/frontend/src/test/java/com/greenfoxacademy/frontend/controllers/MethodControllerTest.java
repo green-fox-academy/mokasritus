@@ -34,18 +34,12 @@ class MethodControllerTest {
         .andExpect(jsonPath("$.result").value(new DoubledValue(5).getResult()));
   }
 
-  //  @Test
-  //  void givenInput_whenGetDoubling_returnDoubledInput() throws Exception {
-  //    mockMvc.perform(get("/doubling?input=5"))
-  //        .andExpect(status().isOk())
-  //        .andExpect(jsonPath( "$.received", is(5)))
-  //        .andExpect(jsonPath("$.result", is(10)));
-  //  }
-
-
   @Test
   void givenNameAndTitle_whenGreetSomeone_thenReturnStatusOK() throws Exception {
-    mockMvc.perform(get("/greeter?name=Rita&&title=Student"))
+    mockMvc.perform(get("/greeter")
+        .param("name", "Rita")
+        .param("title", "Student"))
+        // mockMvc.perform(get("/greeter?name=Rita&&title=Student"))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.welcome_message", is("Oh, hi there Rita, my dear Student!")));
   }
@@ -65,24 +59,6 @@ class MethodControllerTest {
         .andExpect(jsonPath("$.error").value("Please provide a name!"));
   }
 
-  // @GetMapping(value = "/greeter")
-  //  public ResponseEntity greetSomeone(@RequestParam(required = false) String name,
-  //                                     @RequestParam(required = false) String title) {
-  //    logService.save(new Log("/greeter", "input=" + name + ", " + title));
-  //    if (title == null && name == null) {
-  //      return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-  //          .body(new Error("Please provide a name and a title!"));
-  //    } else if (name == null) {
-  //      return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-  //          .body(new Error("Please provide a name!"));
-  //    } else if (title == null) {
-  //      return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-  //          .body(new Error("Please provide a title!"));
-  //    } else {
-  //      return ResponseEntity.status(HttpStatus.OK).body(new GreatingSomeone(name, title));
-  //    }
-  //  }
-
   @Test
   void givenAppendable_whenAppandA_thenReturnStatusOkWithAppendA() throws Exception {
     mockMvc.perform(get("/appenda/Rit"))
@@ -96,14 +72,6 @@ class MethodControllerTest {
         .andExpect(status().isNotFound());
   }
 
-  // @GetMapping(value = "/appenda/{appendable}")
-  //  public ResponseEntity appandA(@PathVariable String appendable) {
-  //    logService.save(new Log("/appenda", "input=" + appendable));
-  //    if (appendable == null) {
-  //      return new ResponseEntity(HttpStatus.NOT_FOUND);
-  //    } else {
-  //      return ResponseEntity.status(HttpStatus.OK).body(new AppandA(appendable));
-  //    }
   @Test
   void givenActionAndJsonObject_whenDoUntil_returnStatusOk() throws Exception {
     ObjectMapper objectMapper = new ObjectMapper();
@@ -114,25 +82,14 @@ class MethodControllerTest {
   }
 
   @Test
-  void givenActionWithEmptyJsonObject_whenDoUntil_returnStatusBadRequestWithErrorMessage() throws Exception {
+  void givenActionWithoutObject_whenDoUntil_returnStatusBadRequestWithErrorMessage()
+      throws Exception {
 
     mockMvc.perform(post("/dountil/sum"))
         .andExpect(status().isBadRequest())
         .andExpect(jsonPath("$.error", is("Please provide a number!")));
   }
 
-  //  @PostMapping(value = "/dountil/{action}")
-  //  public ResponseEntity doUntil(@PathVariable String action,
-  //                                @RequestBody(required = false) NumberForUntil numberForUntil) {
-  //    logService.save(new Log("/dountil", "input=" + numberForUntil.getUntil()));
-  //    if (numberForUntil == null) {
-  //      return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-  //          .body(new Error("Please provide a number!"));
-  //    } else {
-  //      return ResponseEntity.status(HttpStatus.OK)
-  //          .body(methodServiceImpl.getResultValue(action, numberForUntil));
-  //    }
-  //  }
   @Test
   void arrayHandler() {
   }
