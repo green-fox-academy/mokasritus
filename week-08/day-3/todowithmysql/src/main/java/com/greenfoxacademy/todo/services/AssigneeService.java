@@ -1,6 +1,7 @@
 package com.greenfoxacademy.todo.services;
 
 import com.greenfoxacademy.todo.models.Assignee;
+import com.greenfoxacademy.todo.models.Todo;
 import com.greenfoxacademy.todo.repositories.AssigneeRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,13 @@ public class AssigneeService {
     assigneeRepository.save(newAssignee);
   }
 
+  public void addTodoToAssigne(Long assignee, Todo todo) {
+    getAssigneById(assignee).addTodos(todo);
+  }
+
   public Assignee getAssigneById(Long assigneeId) {
     return assigneeRepository.findAssigneById(assigneeId);
   }
+
+
 }

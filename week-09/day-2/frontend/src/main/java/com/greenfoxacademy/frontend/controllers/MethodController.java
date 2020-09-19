@@ -10,7 +10,7 @@ import com.greenfoxacademy.frontend.models.checkonwebsite.DoubledValue;
 import com.greenfoxacademy.frontend.models.checkonwebsite.GreatingSomeone;
 import com.greenfoxacademy.frontend.models.checkonwebsite.NumberForUntil;
 import com.greenfoxacademy.frontend.services.LogServiceImpl;
-import com.greenfoxacademy.frontend.services.MethodServiceImpl;
+import com.greenfoxacademy.frontend.services.MethodService;
 import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,11 +24,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MethodController {
-  private MethodServiceImpl methodServiceImpl;
+  private MethodService methodServiceImpl;
   private LogServiceImpl logServiceImpl;
 
   @Autowired
-  public MethodController(MethodServiceImpl methodServiceImpl, LogServiceImpl logServiceImpl) {
+  public MethodController(MethodService methodServiceImpl, LogServiceImpl logServiceImpl) {
     this.methodServiceImpl = methodServiceImpl;
     this.logServiceImpl = logServiceImpl;
   }
@@ -38,7 +38,7 @@ public class MethodController {
     if (input == null) {
       return ResponseEntity.status(HttpStatus.OK).body(new Error("Please provide an input!"));
     } else {
-      logServiceImpl.save(new Log("/doubling", "input=" + input.toString()));
+      //logServiceImpl.save(new Log("/doubling", "input=" + input.toString()));
       return ResponseEntity.status(HttpStatus.OK).body(new DoubledValue(input));
     }
   }

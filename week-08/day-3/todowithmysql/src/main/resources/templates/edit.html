@@ -20,6 +20,7 @@
     <br>
     <label for="assignee">Assignee</label>
     <select id="assignee" name="assignee">
+        <!-- select name mezőjét kell beírni a post metód argumentumába-->
         <option value="" selected disabled></option>
         <option th:each="assignee : ${assignees}"  th:text="${assignee.getName()}"
                 th:value="${assignee.getId()}"></option>

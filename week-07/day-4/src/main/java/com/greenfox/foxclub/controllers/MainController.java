@@ -56,6 +56,8 @@ public class MainController {
 
   @PostMapping(value = "/trickCenter")
   public String chooseTrickToLearn(@RequestParam(required = false) String name, String trick) {
+    //trick a select name mezője!!!Névnek stimmelnie kell!!
+
     //nem kell Model model mivel nem adunk át infót egy POST-os metód alatt a html-nek
     Fox myFox = foxService.searchFoxWithName(name);
     foxService.addTrick(name, trickService.searchTrickWithName(trick));

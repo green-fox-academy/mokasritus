@@ -39,7 +39,11 @@
                 </td>
                 <td scope="row" th:text="*{isComplete()}"></td>
                 <td scope="row" th:text="*{isUrgent()}"></td>
-                <td scope="row" th:text="*{getAssignee()}"></td>
+                <td scope="row">
+                    <form th:action="'/assigneeAndTodos'" method="get">
+                        <button type="submit" class="btn btn-link" th:value="*{getAssignee()}">Assignee</button>
+                    </form>
+                </td>
                 <td>
                     <form th:action="'/complete/?todoId=' + *{getId()}" method="post">
                         <button type="submit" class="btn btn-link" th:value="*{getId()}">Complete</button>
@@ -48,6 +52,11 @@
                 <td>
                     <form th:action="'/remove/?todoId=' + *{getId()}" method="post">
                         <button type="submit" class="btn btn-link" th:value="*{getId()}">Delete</button>
+                    </form>
+                </td>
+                <td scope="row">
+                    <form th:action="@{/addAssigneeForTodo/{id} (id=*{getId()})}") method="get">
+                        <button type="submit" class="btn btn-link" th:value="*{getId()}">Add assignee</button>
                     </form>
                 </td>
                 <td>

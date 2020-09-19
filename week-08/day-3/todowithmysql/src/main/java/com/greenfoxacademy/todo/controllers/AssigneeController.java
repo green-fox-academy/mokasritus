@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AssigneeController {
@@ -21,7 +22,13 @@ public class AssigneeController {
   @GetMapping(value = "/assignee")
   public String renderAssigneesPage(Model model) {
     model.addAttribute("assignees", assigneeService.getAllAssignee());
-    return "assignee";
+    return "assigneeDetails";
+  }
+
+  @GetMapping(value="/assigneeAndTodos")
+  public String renderAssigneesWithTodos( Model model){
+    model.addAttribute("assignees", assigneeService.getAllAssignee());
+    return "listAssigneeAndTodo";
   }
 
   @GetMapping(value = "/addAssignee")

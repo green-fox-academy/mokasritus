@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Add Assignee For Todo</title>
+</head>
+<body>
+<h1>Add assignee for todo</h1>
+<form th:action="@{/addAssigneeForTodo/{id} (id=${todo.getId()})}")
+      th:method="post">
+    <label for="assignee">Assignee</label>
+    <select id="assignee" name="assignees">
+        <!-- select name mezőjét kell beírni a post metód argumentumába-->
+        <option value="" selected disabled></option>
+        <option th:each="assignee : ${assignees}"
+                th:text="${assignee.getName()}"
+                th:value="${assignee.getId()}">
+        </option>
+    </select>
+    <br>
+    <button type="submit" value="Submit" th:value="${todo.getId()}">Submit</button>
+</form>
+</body>
+</html>

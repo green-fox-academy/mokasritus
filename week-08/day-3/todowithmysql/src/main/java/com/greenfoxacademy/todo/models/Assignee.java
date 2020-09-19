@@ -9,7 +9,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name= "assignes")
+@Table(name= "assignees")
 public class Assignee {
   private String name;
   private String email;
@@ -22,6 +22,10 @@ public class Assignee {
   private List<Todo> todos;
 
   public Assignee() {
+  }
+
+  public void addTodos(Todo todo){
+    todos.add(todo);
   }
 
   public String getName() {

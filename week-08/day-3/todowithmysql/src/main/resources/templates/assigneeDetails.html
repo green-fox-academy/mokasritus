@@ -19,20 +19,7 @@
         <td scope="row" th:text="*{getId()}"></td>
         <td scope="row" th:text="*{getName()}"></td>
         <td scope="row" th:text="*{getEmail()}"></td>
-     <!--   <td>
-            <form th:action="'/edit/?assigneeId=' + *{id}" method="post">
-                <button type="submit" class="btn btn-link" th:value="*{id}">Remove</button>
-            </form>
-        </td>
-        <td>
-            <form th:action="'/remove/?assigneeId=' + *{id}" method="post">
-                <button type="submit" class="btn btn-link" th:value="*{id}">Remove</button>
-            </form>
-        </td>-->
-        <td th:each="todo: ${assignee.getTodos()}"
-            th:text="${todo.getTitle()}"></td>
     </tr>
 </table>
-
 </body>
 </html>

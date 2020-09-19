@@ -11,8 +11,8 @@
     <input placeholder="Remember everything" type="text"
            id="newtodo" th:field="*{title}">
     <input type="submit"  value="Submit">
-    <label for="assignee">Assignee</label>
     <br>
+    <label for="assignee" th:style="'font-size: 25px;'">Assignee</label>
     <select id="assignee" name="assignee">
         <option value="" selected disabled></option>
         <option th:each="assignee : ${assignees}"  th:text="${assignee.getName()}"

@@ -61,12 +61,16 @@ public class TodoService {
             Collectors.toList());*/
   }
 
-  public void editTodo(long id, String title, boolean isUrgent, Boolean isComplete, Assignee assigneeFoundById) {
+  public void editTodo(long id, String title, boolean isUrgent, Boolean isComplete, Assignee assignee) {
     Todo selectedTodo = repository.findTodoByIdEquals(id);
     selectedTodo.setTitle(title);
     selectedTodo.setIsComplete(isComplete);
     selectedTodo.setUrgent(isUrgent);
-    selectedTodo.setAssignee(assigneeFoundById);
+    selectedTodo.setAssignee(assignee);
     repository.save(selectedTodo);
+  }
+
+ public void addAssigneeToTodo(long todoById, Assignee assigneById) {
+    repository.findTodoByIdEquals(todoById).setAssignee(assigneById);
   }
 }

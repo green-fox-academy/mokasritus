@@ -26,7 +26,6 @@ public class TodoController {
   @GetMapping(value = {"/todo"})
   public String listAllTodo(Model model) {
     model.addAttribute("todos", todoService.getAllTodo());
-    model.addAttribute("assignees", assigneeService.getAllAssignee());
     return "index";
   }
 
@@ -56,10 +55,24 @@ public class TodoController {
     return "edit";
   }
 
+  @GetMapping(value="addAssigneeForTodo/{id}")
+  public String renderAddAssigneeForTodoPage(@PathVariable("id") long id, Model model){
+    model.addAttribute("todo", todoService.getTodoById(id));
+    model.addAttribute("assignees", assigneeService.getAllAssignee());
+        return "addAssigneeForTodo";
+  }
+
+  @PostMapping(value="addAssigneeForTodo/{id}")
+  public String addAssigneeForTodoPage(@PathVariable("id") long id, Long assignees){
+    todoService.addAssigneeToTodo(id, assigneeService.getAssigneById(assignees));
+    return "redirect:/todo";
+  }
+
   @PostMapping(value = "/{id}/edit")
   public String editChoosenTodo(@PathVariable("id") long id, String title, boolean isUrgent,
-                                boolean isComplete, Long assigneeId) {
-    todoService.editTodo(id, title, isUrgent, isComplete, assigneeService.getAssigneById(assigneeId));
+                                boolean isComplete, Long assignee) {
+    todoService.editTodo(id, title, isUrgent, isComplete, assigneeService.getAssigneById(assignee));
+    assigneeService.addTodoToAssigne(assignee, todoService.getTodoById(id));
     return "redirect:/todo";
   }
 

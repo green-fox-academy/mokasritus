@@ -1,9 +1,8 @@
 package com.greenfoxacademy.frontend.controllers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import com.greenfoxacademy.frontend.models.checkonwebsite.DoubledValue;
-import com.greenfoxacademy.frontend.services.LogService;
+import com.greenfoxacademy.frontend.services.LogServiceImpl;
 import com.greenfoxacademy.frontend.services.MethodService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,14 +12,16 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+
 @ExtendWith(MockitoExtension.class)
 public class MethodControllerUnitTest {
+
 
   @Mock
   private MethodService methodService;
 
   @Mock
-  private LogService logService;
+  private LogServiceImpl logServiceimpl;
 
   @InjectMocks
   private MethodController methodController;
