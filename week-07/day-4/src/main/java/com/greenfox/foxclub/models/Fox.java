@@ -49,5 +49,9 @@ public class Fox {
   public List<Trick> getTricks() {
     return tricks;
   }
+
+  public void setTricks(List<Trick> tricks) {
+    this.tricks = tricks;
+  }
 }
 

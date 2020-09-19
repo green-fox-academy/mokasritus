@@ -9,7 +9,7 @@ import com.greenfoxacademy.frontend.models.checkonwebsite.AppendA;
 import com.greenfoxacademy.frontend.models.checkonwebsite.DoubledValue;
 import com.greenfoxacademy.frontend.models.checkonwebsite.GreatingSomeone;
 import com.greenfoxacademy.frontend.models.checkonwebsite.NumberForUntil;
-import com.greenfoxacademy.frontend.services.LogService;
+import com.greenfoxacademy.frontend.services.LogServiceImpl;
 import com.greenfoxacademy.frontend.services.MethodServiceImpl;
 import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,20 +25,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MethodController {
   private MethodServiceImpl methodServiceImpl;
-  private LogService logService;
+  private LogServiceImpl logServiceImpl;
 
   @Autowired
-  public MethodController(MethodServiceImpl methodServiceImpl, LogService logService) {
+  public MethodController(MethodServiceImpl methodServiceImpl, LogServiceImpl logServiceImpl) {
     this.methodServiceImpl = methodServiceImpl;
-    this.logService = logService;
+    this.logServiceImpl = logServiceImpl;
   }
 
   @GetMapping(value = "/doubling")
   public ResponseEntity doubleGivenNumber(@RequestParam(required = false) Integer input) {
-    logService.save(new Log("/doubling", "input=" + input.toString()));
     if (input == null) {
       return ResponseEntity.status(HttpStatus.OK).body(new Error("Please provide an input!"));
     } else {
+      logServiceImpl.save(new Log("/doubling", "input=" + input.toString()));
       return ResponseEntity.status(HttpStatus.OK).body(new DoubledValue(input));
     }
   }
@@ -46,7 +46,7 @@ public class MethodController {
   @GetMapping(value = "/greeter")
   public ResponseEntity greetSomeone(@RequestParam(required = false) String name,
                                      @RequestParam(required = false) String title) {
-    logService.save(new Log("/greeter", "input=" + name + ", " + title));
+    logServiceImpl.save(new Log("/greeter", "input=" + name + ", " + title));
     if (title == null && name == null) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST)
           .body(new Error("Please provide a name and a title!"));
@@ -63,7 +63,7 @@ public class MethodController {
 
   @GetMapping(value = "/appenda/{appendable}")
   public ResponseEntity appandA(@PathVariable String appendable) {
-    logService.save(new Log("/appenda", "input=" + appendable));
+    logServiceImpl.save(new Log("/appenda", "input=" + appendable));
     if (appendable == null) {
       return new ResponseEntity(HttpStatus.NOT_FOUND);
     } else {
@@ -78,7 +78,7 @@ public class MethodController {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST)
           .body(new Error("Please provide a number!"));
     } else {
-      logService.save(new Log("/dountil", "input=" + numberForUntil.getUntil()));
+      logServiceImpl.save(new Log("/dountil", "input=" + numberForUntil.getUntil()));
       return ResponseEntity.status(HttpStatus.OK)
           .body(methodServiceImpl.getResultValue(action, numberForUntil));
     }
@@ -86,7 +86,7 @@ public class MethodController {
 
   @PostMapping(value = "/arrays")
   public ResponseEntity arrayHandler(@RequestBody(required = false) ObjectFromJson objectFromJson) {
-    logService.save(new Log("/arrays", "input=" + objectFromJson.getWhat().toString() + ", " +
+    logServiceImpl.save(new Log("/arrays", "input=" + objectFromJson.getWhat().toString() + ", " +
         Arrays.toString(objectFromJson.getNumbers())));
     if (objectFromJson.getWhat() == null) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST)
@@ -101,7 +101,7 @@ public class MethodController {
 
   @GetMapping(value = "/log")
   public ResponseEntity showLogDatas() {
-    return ResponseEntity.status(HttpStatus.OK).body(new Entry(logService.showAllLog()));
+    return ResponseEntity.status(HttpStatus.OK).body(new Entry(logServiceImpl.showAllLog()));
   }
 }
 

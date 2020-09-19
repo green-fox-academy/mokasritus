@@ -4,7 +4,6 @@ import com.greenfox.foxclub.models.Trick;
 import com.greenfox.foxclub.repository.TrickRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 
@@ -20,4 +19,10 @@ public class TrickService {
   public List<Trick> getAllTricks() {
     return trickRepository.getTrickList();
   }
+
+
+  public Trick searchTrickWithName(String trickToLearn) {
+  return trickRepository.findTrickByName(trickToLearn);
+  }
 }
+

@@ -1,5 +1,6 @@
 package com.greenfox.foxclub.repository;
 
+import com.greenfox.foxclub.models.Fox;
 import com.greenfox.foxclub.models.Trick;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,5 +20,15 @@ public class TrickRepository {
 
   public List<Trick> getTrickList() {
     return trickList;
+  }
+
+  public Trick findTrickByName(String trickToLearn) {
+    int trickIndex = 0;
+    for (int i = 0; i < trickList.size(); i++) {
+      if (trickList.get(i).getName().equals(trickToLearn)) {
+        trickIndex = i;
+      }
+    }
+    return trickList.get(trickIndex);
   }
 }

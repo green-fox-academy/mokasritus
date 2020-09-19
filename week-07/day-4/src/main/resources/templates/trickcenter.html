@@ -14,8 +14,9 @@
     <select id="trick" name="trick">
         <option value="" selected disabled></option>
         <option th:each="trick : ${tricks}"
+                th:object="${trick}"
                 th:value="${trick.getName()}"
-                th:text="${trick}"></option>
+                th:text="${trick.getName()}"></option>
     </select>
 
     <input type="submit" value="Learn"/>

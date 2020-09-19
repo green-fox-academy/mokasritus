@@ -7,14 +7,16 @@
 <body>
 <div th:insert="sidebar.html :: sidebar"></div>
 <img src="greenfox.png" alt="greenfox">
+<div>
 <p th:text="'This is ' + ${myFox.getName()} + '. Currently living on ' + ${myFox.getFood()}+ ' and ' + ${myFox.getDrink()}
-+ '. He knows ' + (${myFox.getTricks()==null} ? '0 tricks' : (${myFox.getTricks().size()}) + ' tricks.')"></p>
++ '. He knows ' + ${myFox.getTricks().size()} + ' tricks'"></p>
+</div>
 <h1>Known tricks</h1>
-<div th:if="!${#lists.isEmpty(myFox.getTricks())}">
-    <ul th:each="trick : ${myFox.getTricks()}">
+<div th:if="${myFox.getTricks().size()==0}">You know no tricks, yet. Go and learn some more.</div>
+<div th:unless="${myFox.getTricks().size()==0}" th:object="${myFox}">
+    <ul  th:each="trick : *{getTricks()}">
         <li th:text="${trick.getName()}"></li>
     </ul>
 </div>
-<div th:if="${#lists.isEmpty(myFox.getTricks())}">You know no tricks, yet. Go and learn some more.</div>
 </body>
 </html>

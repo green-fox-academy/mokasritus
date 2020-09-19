@@ -1,6 +1,7 @@
 package com.greenfox.foxclub.controllers;
 
 import com.greenfox.foxclub.models.Fox;
+import com.greenfox.foxclub.models.Trick;
 import com.greenfox.foxclub.services.FoxService;
 import com.greenfox.foxclub.services.TrickService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,6 @@ public class MainController {
   public String renderMainPage(Model model, @RequestParam(required = false) String name) {
     Fox myFox = foxService.searchFoxWithName(name);
     model.addAttribute("myFox", myFox);
-    model.addAttribute("name", myFox.getName());
     return "index";
   }
 
@@ -48,17 +48,18 @@ public class MainController {
   @GetMapping(value = "/trickCenter")
   public String renderTrickCenterPage(Model model, @RequestParam(required = false) String name) {
     Fox myFox = foxService.searchFoxWithName(name);
-    model.addAttribute("name", myFox.getName());
+    model.addAttribute("myfox", myFox);
     //kell hogy a nevet visszaadjuk az url-nek, különben name=null lesz
     model.addAttribute("tricks", trickService.getAllTricks());
     return "trickCenter";
   }
 
   @PostMapping(value = "/trickCenter")
-  public String chooseTrickToLearn(@RequestParam(required = false) String name, String trickToLearn) {
+  public String chooseTrickToLearn(@RequestParam(required = false) String name, String trick) {
     //nem kell Model model mivel nem adunk át infót egy POST-os metód alatt a html-nek
     Fox myFox = foxService.searchFoxWithName(name);
+    foxService.addTrick(name, trickService.searchTrickWithName(trick));
     //foxService.addTrickToLearn(name, trickToLearn);
-    return "redirect:/?name=" + name;
+    return "redirect:/?name=" + myFox.getName();
   }
 }

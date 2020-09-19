@@ -18,12 +18,12 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class MethodControllerTest {
+class MethodControllerIntegrationTest {
 
   private MockMvc mockMvc;
 
   @Autowired
-  public MethodControllerTest(MockMvc mockMvc) {
+  public MethodControllerIntegrationTest(MockMvc mockMvc) {
     this.mockMvc = mockMvc;
   }
 
