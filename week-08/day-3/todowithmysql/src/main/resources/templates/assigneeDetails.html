@@ -13,12 +13,19 @@
         <th scope="col">ID</th>
         <th scope="col">NAME</th>
         <th scope="col">EMAIL</th>
+        <th scope="col">Todos</th>
     </tr>
     </thead>
     <tr th:each="assignee : ${assignees}" th:object="${assignee}">
         <td scope="row" th:text="*{getId()}"></td>
         <td scope="row" th:text="*{getName()}"></td>
         <td scope="row" th:text="*{getEmail()}"></td>
+        <td scope="row">
+            <ul th:each="todo: *{getTodos()}">
+                <li th:text="${todo.title}" style="list-style-type: none;"></li>
+            </ul>
+        </td>
+
     </tr>
 </table>
 </body>

@@ -27,6 +27,7 @@ public class Todo {
   @ManyToOne
   private Assignee assignee;
 
+
   public Todo() {
     isComplete = false;
     isUrgent = false;

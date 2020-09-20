@@ -29,8 +29,11 @@ public class AssigneeService {
   }
 
   public Assignee getAssigneById(Long assigneeId) {
-    return assigneeRepository.findAssigneById(assigneeId);
+    return assigneeRepository.findAssigneeById(assigneeId);
   }
 
 
+  public Assignee findAssigneeByTodo(Todo todo) {
+   return assigneeRepository.findAssigneeByTodosContaining(todo);
+  }
 }

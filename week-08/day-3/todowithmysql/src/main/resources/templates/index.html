@@ -32,20 +32,19 @@
             </tr>
             </thead>
             <tr th:each="todo : ${todos}" th:object="${todo}">
-                <td scope="row" th:text="*{getId()}"></td>
-                <td scope="row"
+                <td scope="row" class="align-middle" th:text="*{getId()}"></td>
+                <td scope="row" class="align-middle"
                     th:style="*{isComplete()}==true ? 'text-decoration: line-through;' : 'text-decoration: none;'"
                     th:text="*{getTitle()}">
-                </td>
+                </td >
                 <td scope="row" th:text="*{isComplete()}"></td>
                 <td scope="row" th:text="*{isUrgent()}"></td>
-                <td scope="row" th:text="*{getAssignee().name}"></td>
 
                 <!-- "/todo" Get mappingnek oda kell adni az összes assignee-t is, csak így találja meg azok tulajdonságait!!!-->
 
-                <td scope="row">
-                    <form th:action="'/assigneeAndTodos'" method="get">
-                        <button type="submit" class="btn btn-link" th:value="*{getAssignee()}">Assignee</button>
+                <td >
+                    <form th:action="@{/assigneeAndTodos/{id} (id=*{getId()})}" method="get">
+                        <button type="submit" class="btn btn-link" th:value="*{getId()}" th:text="*{getAssignee().name}"></button>
                     </form>
                 </td>
                 <td>
