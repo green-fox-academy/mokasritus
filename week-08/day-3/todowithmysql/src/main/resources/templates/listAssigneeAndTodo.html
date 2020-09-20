@@ -10,7 +10,7 @@
 <h1>Assignees</h1>
 <ul th:each="assignee: ${assignees}">
     <li th:text="${assignee.name}"></li>
-    <li th:each="todo: ${assignee.todos}" th:object="${todo}">
+    <li th:each="todo: ${assignee.todos}" th:object="${todo}" style="list-style-type: none;">
         <ul>
             <li th:text="${todo.getTitle()}"></li>
         </ul>

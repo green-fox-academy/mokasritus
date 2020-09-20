@@ -24,7 +24,6 @@ public class AssigneeController {
     model.addAttribute("assignees", assigneeService.getAllAssignee());
     return "assigneeDetails";
   }
-
   @GetMapping(value="/assigneeAndTodos")
   public String renderAssigneesWithTodos( Model model){
     model.addAttribute("assignees", assigneeService.getAllAssignee());

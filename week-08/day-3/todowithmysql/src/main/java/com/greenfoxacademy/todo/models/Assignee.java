@@ -21,7 +21,13 @@ public class Assignee {
   @OneToMany(mappedBy = "assignee")
   private List<Todo> todos;
 
+
   public Assignee() {
+  }
+
+  public Assignee(String name, String email) {
+    this.name = name;
+    this.email = email;
   }
 
   public void addTodos(Todo todo){

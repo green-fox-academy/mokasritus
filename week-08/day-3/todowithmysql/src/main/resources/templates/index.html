@@ -39,6 +39,10 @@
                 </td>
                 <td scope="row" th:text="*{isComplete()}"></td>
                 <td scope="row" th:text="*{isUrgent()}"></td>
+                <td scope="row" th:text="*{getAssignee().name}"></td>
+
+                <!-- "/todo" Get mappingnek oda kell adni az összes assignee-t is, csak így találja meg azok tulajdonságait!!!-->
+
                 <td scope="row">
                     <form th:action="'/assigneeAndTodos'" method="get">
                         <button type="submit" class="btn btn-link" th:value="*{getAssignee()}">Assignee</button>
@@ -55,7 +59,7 @@
                     </form>
                 </td>
                 <td scope="row">
-                    <form th:action="@{/addAssigneeForTodo/{id} (id=*{getId()})}") method="get">
+                    <form th:action="@{/addAssigneeForTodo/{id} (id=*{getId()})}" method="get">
                         <button type="submit" class="btn btn-link" th:value="*{getId()}">Add assignee</button>
                     </form>
                 </td>

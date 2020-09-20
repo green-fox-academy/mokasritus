@@ -26,6 +26,7 @@ public class TodoController {
   @GetMapping(value = {"/todo"})
   public String listAllTodo(Model model) {
     model.addAttribute("todos", todoService.getAllTodo());
+    model.addAttribute("assignees", assigneeService.getAllAssignee());
     return "index";
   }
 
