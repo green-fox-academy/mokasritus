@@ -2,6 +2,7 @@ package com.greenfoxacademy.todo.models;
 
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +19,7 @@ public class Assignee {
   @GeneratedValue (strategy = GenerationType.IDENTITY)
   private long id;
 
-  @OneToMany(mappedBy = "assignee")
+  @OneToMany(mappedBy = "assignee", fetch= FetchType.EAGER)
   private List<Todo> todos;
 
 

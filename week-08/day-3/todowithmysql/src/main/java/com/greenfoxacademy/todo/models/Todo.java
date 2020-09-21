@@ -1,5 +1,6 @@
 package com.greenfoxacademy.todo.models;
 
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="todos")
@@ -27,10 +30,15 @@ public class Todo {
   @ManyToOne
   private Assignee assignee;
 
+  @Temporal(TemporalType.DATE)
+  private Date date;
+
+  private  Date dueDate;
 
   public Todo() {
     isComplete = false;
     isUrgent = false;
+    this.date=new Date();
   }
 
   public Todo(String title, Assignee assignee) {
@@ -60,6 +68,8 @@ public class Todo {
   public Assignee getAssignee() {
     return assignee;
   }
+
+  public Date getDate() {return date;}
 
   public void setTitle(String title) {
     this.title = title;

@@ -26,7 +26,7 @@ public class TodoController {
   @GetMapping(value = {"/todo"})
   public String listAllTodo(Model model) {
     model.addAttribute("todos", todoService.getAllTodo());
-    model.addAttribute("assignees", assigneeService.getAllAssignee());
+  //  model.addAttribute("assignees", assigneeService.getAllAssignee()); -->ez tök jól kiváltja a ManyToOne annotacio (fetch=FetchType.Eager) annotációja
     return "index";
   }
 
@@ -82,7 +82,6 @@ public class TodoController {
     todoService.addTodo(newTodo);
     return "redirect:/todo";
   }
-
 
   @PostMapping(value = "/complete")
   public String completeTodo(@RequestParam long todoId) {

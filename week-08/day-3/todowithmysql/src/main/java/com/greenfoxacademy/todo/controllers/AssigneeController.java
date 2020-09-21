@@ -27,14 +27,14 @@ public class AssigneeController {
   @GetMapping(value = "/assignee")
   public String renderAssigneesPage(Model model) {
     model.addAttribute("assignees", assigneeService.getAllAssignee());
-    model.addAttribute("todos", todoService.getAllTodo());
+   // model.addAttribute("todos", todoService.getAllTodo());
     return "assigneeDetails";
   }
+
   @GetMapping(value="/assigneeAndTodos/{id}")
-  public String renderAssigneesWithTodos(@PathVariable("id") long id, Model model){
-    Todo todo = todoService.getTodoById(id);
-    model.addAttribute("assignees", assigneeService.findAssigneeByTodo(todo));
-    model.addAttribute("todos", todoService.getAllTodo());
+  public String renderAssigneeWithTodos(@PathVariable("id") long id, Model model){
+    model.addAttribute("assignees", assigneeService.findAssigneeByTodo(todoService.getTodoById(id)));
+    //model.addAttribute("todos", todoService.getAllTodo());
     return "choosenAssigneeAndItsTodos";
   }
 
@@ -42,6 +42,13 @@ public class AssigneeController {
   public String renderAddAssigneePage(Model model) {
     model.addAttribute("newAssignee", new Assignee());
     return "addAssignee";
+  }
+
+  @GetMapping(value="/assigneesAndTodos")
+  public String renderAssigneesWithTodos( Model model){
+    model.addAttribute("assignees", assigneeService.getAllAssignee());
+    //model.addAttribute("todos", todoService.getAllTodo());
+    return "listAssigneesAndItsTodos";
   }
 
   @PostMapping(value = "/addAssingee")

@@ -28,7 +28,8 @@
                 <th scope="col">DONE</th>
                 <th scope="col">URGENT</th>
                 <th scope="col">ASSIGNEE</th>
-                <th scope="col">Actions</th>
+                <th scope="col">Date</th>
+                <th scope="col">OPTIONS</th>
             </tr>
             </thead>
             <tr th:each="todo : ${todos}" th:object="${todo}">
@@ -47,6 +48,7 @@
                         <button type="submit" class="btn btn-link" th:value="*{getId()}" th:text="*{getAssignee().name}"></button>
                     </form>
                 </td>
+                <td scope="row" class="align-middle" th:text="*{getDate()}"></td>
                 <td>
                     <form th:action="'/complete/?todoId=' + *{getId()}" method="post">
                         <button type="submit" class="btn btn-link" th:value="*{getId()}">Complete</button>

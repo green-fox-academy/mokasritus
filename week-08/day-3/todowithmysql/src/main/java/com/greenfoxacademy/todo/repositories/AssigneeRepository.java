@@ -12,6 +12,6 @@ public interface AssigneeRepository extends CrudRepository<Assignee, Long> {
   List<Assignee> findAll();
 
   Assignee findAssigneeById(Long assigneeId);
-  
+
   Assignee findAssigneeByTodosContaining(Todo todo);
 }
