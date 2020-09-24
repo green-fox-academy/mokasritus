@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Information page</title>
+</head>
+<body>
+ <div th:insert="sidebar.html :: sidebar"></div>
+
+</div>
+<img src="greenfox.png" alt="greenfox">
+<div>
+<p th:text="'This is ' + ${myFox.getName()} + '. Currently living on ' + ${myFox.getFood()}+ ' and ' + ${myFox.getDrink()}
++ '. He knows ' + ${myFox.getTricks().size()} + ' tricks'"></p>
+</div>
+<h1>Known tricks</h1>
+<div th:if="${myFox.getTricks().size()==0}">You know no tricks, yet. Go and learn some more.</div>
+<div th:unless="${myFox.getTricks().size()==0}" th:object="${myFox}">
+    <ul  th:each="trick : *{getTricks()}">
+        <li th:text="${trick.getName()}"></li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+</head>
+<body>
+<h1>Welcome to Programmer Fox Club!</h1>
+<p>Please provide a name, so you can associate it to your pet!</p>
+
+<form th:action="@{'/login?id=' + ${foxUser.getId()}}" method="post" th:object="${fox}">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" th:field="*{name}" required>
+    <!--fox objectum name mezőjével kötjük össze,
+    mivel a th:object-nél behívtuk az objectumot, itt már a mezőre *-al hivatkozhatunk-->
+    <input type="submit" value="GO">
+</form>
+</body>
+</html>
