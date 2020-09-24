@@ -15,9 +15,9 @@ import org.springframework.http.ResponseEntity;
 
 @ExtendWith(MockitoExtension.class)
 public class MethodControllerUnitTest {
+ // private MethodController methodController;
 
-
-  @Mock
+ @Mock
   private MethodService methodService;
 
   @Mock

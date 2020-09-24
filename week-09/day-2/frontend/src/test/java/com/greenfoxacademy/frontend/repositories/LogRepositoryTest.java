@@ -5,5 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LogRepositoryTest {
+  private List<Log> logs;
 
+  public void save(Log log) {
+    logs.add(log);
+  }
+
+  public List<Log> getLogs(){
+    return logs;
+  }
 }
