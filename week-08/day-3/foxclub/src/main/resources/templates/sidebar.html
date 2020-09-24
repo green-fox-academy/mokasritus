@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+<div th:fragment="sidebar">
+    <ul th:object="${myFox}">
+        <li><a th:href="'/information?name=' + ${myFox.getName()}">Information</a></li>
+        <li><a th:href="'/nutritionStore?name=' + *{name}">Nutrition store</a></li>
+        <li><a th:href="'/trickCenter?name=' + *{name}">Trick Center</a></li>
+        <li><a href="/">Action History</a></li>
+    </ul>
+</div>
+</body>
+</html>
