@@ -9,8 +9,10 @@ import com.greenfoxacademy.frontend.models.checkonwebsite.AppendA;
 import com.greenfoxacademy.frontend.models.checkonwebsite.DoubledValue;
 import com.greenfoxacademy.frontend.models.checkonwebsite.GreatingSomeone;
 import com.greenfoxacademy.frontend.models.checkonwebsite.NumberForUntil;
+import com.greenfoxacademy.frontend.models.sith.SithSentence;
 import com.greenfoxacademy.frontend.services.LogServiceImpl;
 import com.greenfoxacademy.frontend.services.MethodService;
+import com.greenfoxacademy.frontend.services.SithService;
 import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,11 +28,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class MethodController {
   private MethodService methodServiceImpl;
   private LogServiceImpl logServiceImpl;
+  private SithService sithService;
 
   @Autowired
-  public MethodController(MethodService methodServiceImpl, LogServiceImpl logServiceImpl) {
+  public MethodController(MethodService methodServiceImpl, LogServiceImpl logServiceImpl, SithService sithService) {
     this.methodServiceImpl = methodServiceImpl;
     this.logServiceImpl = logServiceImpl;
+    this.sithService = sithService;
   }
 
   @GetMapping(value = "/doubling")
@@ -102,6 +106,11 @@ public class MethodController {
   @GetMapping(value = "/log")
   public ResponseEntity showLogDatas() {
     return ResponseEntity.status(HttpStatus.OK).body(new Entry(logServiceImpl.showAllLog()));
+  }
+
+  @PostMapping ("/sith")
+  public ResponseEntity <Object> getResponse (@RequestBody SithSentence sithSentence){
+    return ResponseEntity.status(HttpStatus.OK).body(sithService.createResponse(sithSentence.getText()));
   }
 }
 

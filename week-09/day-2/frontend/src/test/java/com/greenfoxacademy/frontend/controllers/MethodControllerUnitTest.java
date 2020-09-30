@@ -2,7 +2,7 @@ package com.greenfoxacademy.frontend.controllers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.greenfoxacademy.frontend.models.checkonwebsite.DoubledValue;
-import com.greenfoxacademy.frontend.services.LogServiceImpl;
+import com.greenfoxacademy.frontend.services.LogService;
 import com.greenfoxacademy.frontend.services.MethodService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,13 +15,12 @@ import org.springframework.http.ResponseEntity;
 
 @ExtendWith(MockitoExtension.class)
 public class MethodControllerUnitTest {
- // private MethodController methodController;
 
  @Mock
   private MethodService methodService;
 
   @Mock
-  private LogServiceImpl logServiceimpl;
+  private LogService logService;
 
   @InjectMocks
   private MethodController methodController;
