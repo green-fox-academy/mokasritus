@@ -19,10 +19,16 @@ public class MainController {
     this.todoService = todoService;
   }
 
-  @GetMapping(value = {"/", "/todo"})
+  @GetMapping(value = "/todo")
   public String renderMainPage(Model model) {
     model.addAttribute("todos", todoService.findAll());
     model.addAttribute("newTodo", new Todo());
+    return "main";
+  }
+
+  @GetMapping(value = {"/", "/list"})
+  public String showActiveTodos(Model model) {
+    model.addAttribute("todos", todoService.findActiveTodos());
     return "main";
   }
 

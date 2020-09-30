@@ -39,4 +39,8 @@ public class TodoService {
     Todo todoForDelete = findTodoById(id);
     todoRepository.delete(todoForDelete);
   }
+
+  public List<Todo> findActiveTodos() {
+    return todoRepository.findAllByCompleteFalse();
+  }
 }

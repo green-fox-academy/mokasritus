@@ -8,4 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 @Repository
 public interface TodoRepository extends CrudRepository<Todo, Long> {
   List<Todo> findAll();
+
+  List<Todo> findAllByCompleteFalse();
 }
