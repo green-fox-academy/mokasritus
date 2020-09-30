@@ -45,4 +45,10 @@ public class MainController {
     todoService.addTodo(newTodo); //setter kell a title-re, isUrgent-re, IsCompletere!!!!
     return "redirect:/todo";
   }
+
+  @PostMapping(value = "/deleteTodo/{id}")
+  public String deleteTodo(@PathVariable long id) {
+    todoService.deleteTodo(id);
+    return "redirect:/todo";
+  }
 }
