@@ -1,9 +1,13 @@
 package com.greenfoxacademy.todo.models;
 
+import java.util.ArrayList;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -16,6 +20,9 @@ public class Todo {
   @Id
   @GeneratedValue (strategy = GenerationType.IDENTITY)
   private long id;
+
+  @ManyToOne (fetch = FetchType.EAGER)
+  private Assignee assignee;
 
   public Todo() {
     urgent =false;
@@ -49,6 +56,10 @@ public class Todo {
     return id;
   }
 
+  public Assignee getAssignee() {
+    return assignee;
+  }
+
   public void setTitle(String title) {
     this.title = title;
   }
@@ -59,5 +70,9 @@ public class Todo {
 
   public void setComplete(boolean complete) {
     this.complete = complete;
+  }
+
+  public void setAssignee(Assignee assignee) {
+    this.assignee = assignee;
   }
 }

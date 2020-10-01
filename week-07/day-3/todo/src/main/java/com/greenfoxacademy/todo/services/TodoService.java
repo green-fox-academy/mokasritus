@@ -1,5 +1,6 @@
 package com.greenfoxacademy.todo.services;
 
+import com.greenfoxacademy.todo.models.Assignee;
 import com.greenfoxacademy.todo.models.Todo;
 import com.greenfoxacademy.todo.repositories.TodoRepository;
 import java.util.List;
@@ -27,11 +28,11 @@ public class TodoService {
     return todoRepository.findById(id).orElse(null);
   }
 
-
-  public void modifyTodo(Todo todoById, boolean isUrgent, boolean isComplete, String title) {
+  public void modifyTodo(Todo todoById, boolean isUrgent, boolean isComplete, String title, Assignee assignee) {
   todoById.setUrgent(isUrgent);
   todoById.setComplete(isComplete);
   todoById.setTitle(title);
+  todoById.setAssignee(assignee);
   todoRepository.save(todoById);
   }
 

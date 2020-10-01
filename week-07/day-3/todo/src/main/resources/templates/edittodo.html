@@ -18,6 +18,16 @@
     <label for="complete">Complete</label>
     <input type="checkbox" th:field="*{complete}" name="complete" id="complete">
 
+    <label for="assignee"></label>
+    <label for="drink">Drink</label>
+    <select id="assignee" name="assignee">
+        <option value="" selected disabled></option>
+        <!-- ez adja meg hogy a legördülő menü alapból ne válasszon ki semmit ha >Valami</option> akkor Valami lesz az alap-->
+        <option th:each="assignee : ${assignees}"
+                th:value="${assignee.id}"
+                th:text="${assignee.name}"/>
+    </select>
+
     <button type="submit">Submit</button>
 </form>
 </body>

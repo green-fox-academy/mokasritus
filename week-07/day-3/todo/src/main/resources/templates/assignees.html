@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignees</title>
+</head>
+<body>
+<div class="container">
+    <table  class="table table-striped table-sm table-bordered table-hover">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Todos</th>
+        </tr>
+        <tr th:each="assignee: ${assignees}" th:object="${assignee}">
+            <td th:text="*{id}"></td>
+            <td th:text="*{name}"></td>
+            <td th:text="*{email}"></td>
+            <td>
+
+                <ul th:each="todo: *{todos}">
+                    <li th:text="${todo.title}"></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
