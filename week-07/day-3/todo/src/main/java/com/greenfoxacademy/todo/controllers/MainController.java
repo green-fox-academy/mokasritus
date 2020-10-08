@@ -45,8 +45,8 @@ public class MainController {
     return "edittodo";
   }
 
-  @GetMapping(value="/assignees")
-  public  String renderAssignees(Model model){
+  @GetMapping(value = "/assignees")
+  public String renderAssignees(Model model) {
     model.addAttribute("assignees", assigneeService.findAll());
     return "assignees";
   }
@@ -58,6 +58,11 @@ public class MainController {
   }
   //a html name mezőjébe írt név viszi át a primitíveket, azon a néven kell meghívni itt és hozzájuk nem kell requestparam!!
 
+  /*@PostMapping(value = "/editTodo/{id}")
+  public String editTodo(@ModelAttribute Todo editTodo) {
+    todoService.addTodo(editTodo);
+    return "redirect:/todo";
+  }*/
 
   @PostMapping(value = "/addTodo")
   public String addTodo(@ModelAttribute Todo newTodo) {
@@ -72,7 +77,7 @@ public class MainController {
   }
 
   @PostMapping(value = "/addAssignee")
-  public String addAssignee(@ModelAttribute Assignee newAssignee){
+  public String addAssignee(@ModelAttribute Assignee newAssignee) {
     assigneeService.addAssignee(newAssignee);
     return "redirect:/todo";
   }

@@ -7,7 +7,7 @@
 <body>
 <h1>Add new todo</h1>
 <form th:object="${editTodo}" th:action="@{/editTodo/{id}(id=*{id})}" th:method="post">
-    <input type="hidden" th:text="*{id}">
+    <input hidden type="text" th:value="*{id}" name="id">
 
     <label for="title">Todo description</label>
     <input type="text" th:field="*{title}" name="title" id="title">
@@ -18,8 +18,7 @@
     <label for="complete">Complete</label>
     <input type="checkbox" th:field="*{complete}" name="complete" id="complete">
 
-    <label for="assignee"></label>
-    <label for="drink">Drink</label>
+    <label for="assignee">Assignee</label>
     <select id="assignee" name="assignee">
         <option value="" selected disabled></option>
         <!-- ez adja meg hogy a legördülő menü alapból ne válasszon ki semmit ha >Valami</option> akkor Valami lesz az alap-->
